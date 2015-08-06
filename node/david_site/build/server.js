@@ -84,9 +84,9 @@ module.exports =
   
   var _coreDatabase2 = _interopRequireDefault(_coreDatabase);
   
-  var _componentsApp = __webpack_require__(111);
+  var _ComponentsApp = __webpack_require__(111);
   
-  var _componentsApp2 = _interopRequireDefault(_componentsApp);
+  var _ComponentsApp2 = _interopRequireDefault(_ComponentsApp);
   
   var server = (0, _express2['default'])();
   
@@ -102,7 +102,7 @@ module.exports =
   // Register server-side rendering middleware
   // -----------------------------------------------------------------------------
   
-  // The top-level React component + HTML template for it
+  // The top-level React Component + HTML template for it
   var templateFile = _path2['default'].join(__dirname, 'templates/index.html');
   var template = _lodash2['default'].template(_fs2['default'].readFileSync(templateFile, 'utf8'));
   
@@ -123,7 +123,7 @@ module.exports =
                   notFound = false;
                   css = [];
                   data = { description: '' };
-                  app = _react2['default'].createElement(_componentsApp2['default'], {
+                  app = _react2['default'].createElement(_ComponentsApp2['default'], {
                     path: req.path,
                     context: {
                       onInsertCss: function onInsertCss(value) {
@@ -485,8 +485,8 @@ module.exports =
         }
   
         _createClass(WithStyles, [{
-          key: 'componentWillMount',
-          value: function componentWillMount() {
+          key: 'ComponentWillMount',
+          value: function ComponentWillMount() {
             if (_node_modulesReactLibExecutionEnvironment.canUseDOM) {
               (0, _node_modulesReactLibInvariant2['default'])(styles.use, 'The style-loader must be configured with reference-counted API.');
               styles.use();
@@ -495,8 +495,8 @@ module.exports =
             }
           }
         }, {
-          key: 'componentWillUnmount',
-          value: function componentWillUnmount() {
+          key: 'ComponentWillUnmount',
+          value: function ComponentWillUnmount() {
             styles.unuse();
             if (this.styleId) {
               this.refCount--;
@@ -5023,13 +5023,13 @@ module.exports =
     }
   
     _createClass(App, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
+      key: 'ComponentDidMount',
+      value: function ComponentDidMount() {
         window.addEventListener('popstate', this.handlePopState);
       }
     }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
+      key: 'ComponentWillUnmount',
+      value: function ComponentWillUnmount() {
         window.removeEventListener('popstate', this.handlePopState);
       }
     }, {
@@ -5040,7 +5040,7 @@ module.exports =
     }, {
       key: 'render',
       value: function render() {
-        var component = undefined;
+        var Component = undefined;
   
         switch (this.props.path) {
   
@@ -5048,27 +5048,27 @@ module.exports =
           case '/about':
           case '/privacy':
             var page = _storesAppStore2['default'].getPage(this.props.path);
-            component = _react2['default'].createElement(pages[page.component], page);
+            Component = _react2['default'].createElement(pages[page.Component], page);
             break;
   
           case '/contact':
-            component = _react2['default'].createElement(_ContactPage2['default'], null);
+            Component = _react2['default'].createElement(_ContactPage2['default'], null);
             break;
   
           case '/login':
-            component = _react2['default'].createElement(_LoginPage2['default'], null);
+            Component = _react2['default'].createElement(_LoginPage2['default'], null);
             break;
   
           case '/register':
-            component = _react2['default'].createElement(_RegisterPage2['default'], null);
+            Component = _react2['default'].createElement(_RegisterPage2['default'], null);
             break;
         }
   
-        return component ? _react2['default'].createElement(
+        return Component ? _react2['default'].createElement(
           'div',
           null,
           _react2['default'].createElement(_Header2['default'], null),
-          component,
+          Component,
           _react2['default'].createElement(_Feedback2['default'], null),
           _react2['default'].createElement(_Footer2['default'], null)
         ) : _react2['default'].createElement(_NotFoundPage2['default'], null);
@@ -6006,8 +6006,8 @@ module.exports =
       _inherits(WithViewport, _Component);
   
       _createClass(WithViewport, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
+        key: 'ComponentDidMount',
+        value: function ComponentDidMount() {
           if (!EE) {
             EE = new _eventemitter32['default']();
             window.addEventListener('resize', handleWindowResize);
@@ -6016,8 +6016,8 @@ module.exports =
           EE.on('resize', this.handleResize, this);
         }
       }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
+        key: 'ComponentWillUnmount',
+        value: function ComponentWillUnmount() {
           EE.removeListener(RESIZE_EVENT, this.handleResize, this);
           if (!EE.listeners(RESIZE_EVENT, true)) {
             window.removeEventListener('resize', handleWindowResize);

@@ -35,11 +35,11 @@
 ├── /src/                       # The source code of the application
 │   ├── /api/                   # REST API / Relay endpoints
 │   ├── /actions/               # Action creators that allow to trigger a dispatch to stores
-│   ├── /components/            # React components
+│   ├── /Components/            # React Components
 │   ├── /constants/             # Constants (action types etc.)
 │   ├── /content/               # Static content (plain HTML or Markdown, Jade, you name it)
-│   ├── /core/                  # Core components (Flux dispatcher, base classes, utilities)
-│   ├── /decorators/            # Higher-order React components
+│   ├── /core/                  # Core Components (Flux dispatcher, base classes, utilities)
+│   ├── /decorators/            # Higher-order React Components
 │   ├── /public/                # Static files which are copied into the /build/public folder
 │   ├── /stores/                # Stores contain the application state and logic
 │   ├── /templates/             # HTML templates for server-side rendering, emails etc.
@@ -62,7 +62,7 @@ $ git clone -o react-starter-kit -b master --single-branch \
       https://github.com/kriasoft/react-starter-kit.git MyApp
 $ cd MyApp
 $ npm install -g gulp           # Install Gulp task runner globally
-$ npm install                   # Install Node.js components listed in ./package.json
+$ npm install                   # Install Node.js Components listed in ./package.json
 ```
 
 ### How to Build
@@ -123,8 +123,8 @@ the file is. Name the test by appending `-test.js` to the js file.
 
 ### Related Projects
 
- * [React Component Starter Kit](https://github.com/kriasoft/react-component-starter)
- * [React Decorators](https://github.com/kriasoft/react-decorators) (higher-order components)
+ * [React Component Starter Kit](https://github.com/kriasoft/react-Component-starter)
+ * [React Decorators](https://github.com/kriasoft/react-decorators) (higher-order Components)
 
 ### Learn More
 

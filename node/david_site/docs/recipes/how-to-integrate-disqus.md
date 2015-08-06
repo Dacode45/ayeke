@@ -36,11 +36,11 @@ class DisqusThread {
       this.props.path !== nextProps.path;
   }
 
-  componentDidMount() {
+  ComponentDidMount() {
     renderDisqus();
   }
 
-  componentDidUpdate() {
+  ComponentDidUpdate() {
     renderDisqus();
   }
 

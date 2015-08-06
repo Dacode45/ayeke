@@ -45,7 +45,7 @@ function withStyles(styles) {
       }.bind(this);
     }
 
-    componentWillMount() {
+    ComponentWillMount() {
       if (canUseDOM) {
         invariant(styles.use, `The style-loader must be configured with reference-counted API.`);
         styles.use();
@@ -54,7 +54,7 @@ function withStyles(styles) {
       }
     }
 
-    componentWillUnmount() {
+    ComponentWillUnmount() {
       styles.unuse();
       if (this.styleId) {
         this.refCount--;

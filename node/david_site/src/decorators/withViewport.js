@@ -26,7 +26,7 @@ function withViewport(ComposedComponent) {
       };
     }
 
-    componentDidMount() {
+    ComponentDidMount() {
       if (!EE) {
         EE = new EventEmitter();
         window.addEventListener('resize', handleWindowResize);
@@ -35,7 +35,7 @@ function withViewport(ComposedComponent) {
       EE.on('resize', this.handleResize, this);
     }
 
-    componentWillUnmount() {
+    ComponentWillUnmount() {
       EE.removeListener(RESIZE_EVENT, this.handleResize, this);
       if (!EE.listeners(RESIZE_EVENT, true)) {
         window.removeEventListener('resize', handleWindowResize);

@@ -60,9 +60,9 @@
   
   var _fastclick2 = _interopRequireDefault(_fastclick);
   
-  var _componentsApp = __webpack_require__(184);
+  var _ComponentsApp = __webpack_require__(184);
   
-  var _componentsApp2 = _interopRequireDefault(_componentsApp);
+  var _ComponentsApp2 = _interopRequireDefault(_ComponentsApp);
   
   var _coreDispatcher = __webpack_require__(66);
   
@@ -93,7 +93,7 @@
   };
   
   function run() {
-    // Render the top-level React component
+    // Render the top-level React Component
     var props = {
       path: path,
       context: {
@@ -103,7 +103,7 @@
         onSetMeta: onSetMeta
       }
     };
-    var element = _react2['default'].createElement(_componentsApp2['default'], props);
+    var element = _react2['default'].createElement(_ComponentsApp2['default'], props);
     _react2['default'].render(element, document.getElementById('app'), function () {
       var css = document.getElementById('css');
       css.parentNode.removeChild(css);
@@ -494,7 +494,7 @@
     this.key = key;
     this.ref = ref;
   
-    // Record the component responsible for creating this element.
+    // Record the Component responsible for creating this element.
     this._owner = owner;
   
     // TODO: Deprecate withContext, and then the context becomes accessible
@@ -682,7 +682,7 @@
   
   /**
    * @param {?object} object
-   * @return {boolean} True if `object` is a valid component.
+   * @return {boolean} True if `object` is a valid Component.
    * @final
    */
   ReactElement.isValidElement = function(object) {
@@ -1016,8 +1016,8 @@
   var injectedMixins = [];
   
   /**
-   * Composite components are higher-level components that compose other composite
-   * or native components.
+   * Composite Components are higher-level Components that compose other composite
+   * or native Components.
    *
    * To create a new type of `ReactClass`, pass a specification of
    * your new class to `React.createClass`. The only requirement of your class
@@ -1040,7 +1040,7 @@
   var ReactClassInterface = {
   
     /**
-     * An array of Mixin objects to include when defining your component.
+     * An array of Mixin objects to include when defining your Component.
      *
      * @type {array}
      * @optional
@@ -1049,7 +1049,7 @@
   
     /**
      * An object containing properties and methods that should be defined on
-     * the component's constructor instead of its prototype (static methods).
+     * the Component's constructor instead of its prototype (static methods).
      *
      * @type {object}
      * @optional
@@ -1057,7 +1057,7 @@
     statics: SpecPolicy.DEFINE_MANY,
   
     /**
-     * Definition of prop types for this component.
+     * Definition of prop types for this Component.
      *
      * @type {object}
      * @optional
@@ -1065,7 +1065,7 @@
     propTypes: SpecPolicy.DEFINE_MANY,
   
     /**
-     * Definition of context types for this component.
+     * Definition of context types for this Component.
      *
      * @type {object}
      * @optional
@@ -1073,7 +1073,7 @@
     contextTypes: SpecPolicy.DEFINE_MANY,
   
     /**
-     * Definition of context types this component sets for its children.
+     * Definition of context types this Component sets for its children.
      *
      * @type {object}
      * @optional
@@ -1083,7 +1083,7 @@
     // ==== Definition methods ====
   
     /**
-     * Invoked when the component is mounted. Values in the mapping will be set on
+     * Invoked when the Component is mounted. Values in the mapping will be set on
      * `this.props` if that prop is not specified (i.e. using an `in` check).
      *
      * This method is invoked before `getInitialState` and therefore cannot rely
@@ -1095,7 +1095,7 @@
     getDefaultProps: SpecPolicy.DEFINE_MANY_MERGED,
   
     /**
-     * Invoked once before the component is mounted. The return value will be used
+     * Invoked once before the Component is mounted. The return value will be used
      * as the initial value of `this.state`.
      *
      *   getInitialState: function() {
@@ -1118,7 +1118,7 @@
   
     /**
      * Uses props from `this.props` and state from `this.state` to render the
-     * structure of the component.
+     * structure of the Component.
      *
      * No guarantees are made about when or how often this method is invoked, so
      * it must not have side effects.
@@ -1139,53 +1139,53 @@
     // ==== Delegate methods ====
   
     /**
-     * Invoked when the component is initially created and about to be mounted.
+     * Invoked when the Component is initially created and about to be mounted.
      * This may have side effects, but any external subscriptions or data created
-     * by this method must be cleaned up in `componentWillUnmount`.
+     * by this method must be cleaned up in `ComponentWillUnmount`.
      *
      * @optional
      */
-    componentWillMount: SpecPolicy.DEFINE_MANY,
+    ComponentWillMount: SpecPolicy.DEFINE_MANY,
   
     /**
-     * Invoked when the component has been mounted and has a DOM representation.
+     * Invoked when the Component has been mounted and has a DOM representation.
      * However, there is no guarantee that the DOM node is in the document.
      *
-     * Use this as an opportunity to operate on the DOM when the component has
+     * Use this as an opportunity to operate on the DOM when the Component has
      * been mounted (initialized and rendered) for the first time.
      *
-     * @param {DOMElement} rootNode DOM element representing the component.
+     * @param {DOMElement} rootNode DOM element representing the Component.
      * @optional
      */
-    componentDidMount: SpecPolicy.DEFINE_MANY,
+    ComponentDidMount: SpecPolicy.DEFINE_MANY,
   
     /**
-     * Invoked before the component receives new props.
+     * Invoked before the Component receives new props.
      *
      * Use this as an opportunity to react to a prop transition by updating the
      * state using `this.setState`. Current props are accessed via `this.props`.
      *
-     *   componentWillReceiveProps: function(nextProps, nextContext) {
+     *   ComponentWillReceiveProps: function(nextProps, nextContext) {
      *     this.setState({
      *       likesIncreasing: nextProps.likeCount > this.props.likeCount
      *     });
      *   }
      *
-     * NOTE: There is no equivalent `componentWillReceiveState`. An incoming prop
+     * NOTE: There is no equivalent `ComponentWillReceiveState`. An incoming prop
      * transition may cause a state change, but the opposite is not true. If you
-     * need it, you are probably looking for `componentWillUpdate`.
+     * need it, you are probably looking for `ComponentWillUpdate`.
      *
      * @param {object} nextProps
      * @optional
      */
-    componentWillReceiveProps: SpecPolicy.DEFINE_MANY,
+    ComponentWillReceiveProps: SpecPolicy.DEFINE_MANY,
   
     /**
-     * Invoked while deciding if the component should be updated as a result of
+     * Invoked while deciding if the Component should be updated as a result of
      * receiving new props, state and/or context.
      *
      * Use this as an opportunity to `return false` when you're certain that the
-     * transition to the new props/state/context will not require a component
+     * transition to the new props/state/context will not require a Component
      * update.
      *
      *   shouldComponentUpdate: function(nextProps, nextState, nextContext) {
@@ -1197,13 +1197,13 @@
      * @param {object} nextProps
      * @param {?object} nextState
      * @param {?object} nextContext
-     * @return {boolean} True if the component should update.
+     * @return {boolean} True if the Component should update.
      * @optional
      */
     shouldComponentUpdate: SpecPolicy.DEFINE_ONCE,
   
     /**
-     * Invoked when the component is about to update due to a transition from
+     * Invoked when the Component is about to update due to a transition from
      * `this.props`, `this.state` and `this.context` to `nextProps`, `nextState`
      * and `nextContext`.
      *
@@ -1217,41 +1217,41 @@
      * @param {ReactReconcileTransaction} transaction
      * @optional
      */
-    componentWillUpdate: SpecPolicy.DEFINE_MANY,
+    ComponentWillUpdate: SpecPolicy.DEFINE_MANY,
   
     /**
-     * Invoked when the component's DOM representation has been updated.
+     * Invoked when the Component's DOM representation has been updated.
      *
-     * Use this as an opportunity to operate on the DOM when the component has
+     * Use this as an opportunity to operate on the DOM when the Component has
      * been updated.
      *
      * @param {object} prevProps
      * @param {?object} prevState
      * @param {?object} prevContext
-     * @param {DOMElement} rootNode DOM element representing the component.
+     * @param {DOMElement} rootNode DOM element representing the Component.
      * @optional
      */
-    componentDidUpdate: SpecPolicy.DEFINE_MANY,
+    ComponentDidUpdate: SpecPolicy.DEFINE_MANY,
   
     /**
-     * Invoked when the component is about to be removed from its parent and have
+     * Invoked when the Component is about to be removed from its parent and have
      * its DOM representation destroyed.
      *
      * Use this as an opportunity to deallocate any external resources.
      *
-     * NOTE: There is no `componentDidUnmount` since your component will have been
+     * NOTE: There is no `ComponentDidUnmount` since your Component will have been
      * destroyed by that point.
      *
      * @optional
      */
-    componentWillUnmount: SpecPolicy.DEFINE_MANY,
+    ComponentWillUnmount: SpecPolicy.DEFINE_MANY,
   
   
   
     // ==== Advanced methods ====
   
     /**
-     * Updates the component's currently mounted DOM representation.
+     * Updates the Component's currently mounted DOM representation.
      *
      * By default, this implements React's rendering and reconciliation algorithm.
      * Sophisticated clients may wish to override this.
@@ -1348,7 +1348,7 @@
   function validateTypeDef(Constructor, typeDef, location) {
     for (var propName in typeDef) {
       if (typeDef.hasOwnProperty(propName)) {
-        // use a warning instead of an invariant so components
+        // use a warning instead of an invariant so Components
         // don't show up in prod but not in __DEV__
         (true ? warning(
           typeof typeDef[propName] === 'function',
@@ -1384,7 +1384,7 @@
         specPolicy === SpecPolicy.DEFINE_MANY ||
         specPolicy === SpecPolicy.DEFINE_MANY_MERGED,
         'ReactClassInterface: You are attempting to define ' +
-        '`%s` on your component more than once. This conflict may be due ' +
+        '`%s` on your Component more than once. This conflict may be due ' +
         'to a mixin.',
         name
       ) : invariant(specPolicy === SpecPolicy.DEFINE_MANY ||
@@ -1404,12 +1404,12 @@
     (true ? invariant(
       typeof spec !== 'function',
       'ReactClass: You\'re attempting to ' +
-      'use a component class as a mixin. Instead, just use a regular object.'
+      'use a Component class as a mixin. Instead, just use a regular object.'
     ) : invariant(typeof spec !== 'function'));
     (true ? invariant(
       !ReactElement.isValidElement(spec),
       'ReactClass: You\'re attempting to ' +
-      'use a component as a mixin. Instead, just use a regular object.'
+      'use a Component as a mixin. Instead, just use a regular object.'
     ) : invariant(!ReactElement.isValidElement(spec)));
   
     var proto = Constructor.prototype;
@@ -1468,7 +1468,7 @@
                 (specPolicy === SpecPolicy.DEFINE_MANY_MERGED || specPolicy === SpecPolicy.DEFINE_MANY)
               ),
               'ReactClass: Unexpected spec policy %s for key %s ' +
-              'when mixing in component specs.',
+              'when mixing in Component specs.',
               specPolicy,
               name
             ) : invariant(isReactClassMethod && (
@@ -1521,7 +1521,7 @@
       (true ? invariant(
         !isInherited,
         'ReactClass: You are attempting to define ' +
-        '`%s` on your component more than once. This conflict may be ' +
+        '`%s` on your Component more than once. This conflict may be ' +
         'due to a mixin.',
         name
       ) : invariant(!isInherited));
@@ -1599,44 +1599,44 @@
   }
   
   /**
-   * Binds a method to the component.
+   * Binds a method to the Component.
    *
-   * @param {object} component Component whose method is going to be bound.
+   * @param {object} Component Component whose method is going to be bound.
    * @param {function} method Method to be bound.
    * @return {function} The bound method.
    */
-  function bindAutoBindMethod(component, method) {
-    var boundMethod = method.bind(component);
+  function bindAutoBindMethod(Component, method) {
+    var boundMethod = method.bind(Component);
     if (true) {
-      boundMethod.__reactBoundContext = component;
+      boundMethod.__reactBoundContext = Component;
       boundMethod.__reactBoundMethod = method;
       boundMethod.__reactBoundArguments = null;
-      var componentName = component.constructor.displayName;
+      var ComponentName = Component.constructor.displayName;
       var _bind = boundMethod.bind;
       /* eslint-disable block-scoped-var, no-undef */
       boundMethod.bind = function(newThis ) {for (var args=[],$__0=1,$__1=arguments.length;$__0<$__1;$__0++) args.push(arguments[$__0]);
         // User is trying to bind() an autobound method; we effectively will
         // ignore the value of "this" that the user is trying to use, so
         // let's warn.
-        if (newThis !== component && newThis !== null) {
+        if (newThis !== Component && newThis !== null) {
           (true ? warning(
             false,
-            'bind(): React component methods may only be bound to the ' +
-            'component instance. See %s',
-            componentName
+            'bind(): React Component methods may only be bound to the ' +
+            'Component instance. See %s',
+            ComponentName
           ) : null);
         } else if (!args.length) {
           (true ? warning(
             false,
-            'bind(): You are binding a component method to the component. ' +
+            'bind(): You are binding a Component method to the Component. ' +
             'React does this for you automatically in a high-performance ' +
             'way, so you can safely remove this call. See %s',
-            componentName
+            ComponentName
           ) : null);
           return boundMethod;
         }
         var reboundMethod = _bind.apply(boundMethod, arguments);
-        reboundMethod.__reactBoundContext = component;
+        reboundMethod.__reactBoundContext = Component;
         reboundMethod.__reactBoundMethod = method;
         reboundMethod.__reactBoundArguments = args;
         return reboundMethod;
@@ -1647,19 +1647,19 @@
   }
   
   /**
-   * Binds all auto-bound methods in a component.
+   * Binds all auto-bound methods in a Component.
    *
-   * @param {object} component Component whose method is going to be bound.
+   * @param {object} Component Component whose method is going to be bound.
    */
-  function bindAutoBindMethods(component) {
-    for (var autoBindKey in component.__reactAutoBindMap) {
-      if (component.__reactAutoBindMap.hasOwnProperty(autoBindKey)) {
-        var method = component.__reactAutoBindMap[autoBindKey];
-        component[autoBindKey] = bindAutoBindMethod(
-          component,
+  function bindAutoBindMethods(Component) {
+    for (var autoBindKey in Component.__reactAutoBindMap) {
+      if (Component.__reactAutoBindMap.hasOwnProperty(autoBindKey)) {
+        var method = Component.__reactAutoBindMap[autoBindKey];
+        Component[autoBindKey] = bindAutoBindMethod(
+          Component,
           ReactErrorUtils.guard(
             method,
-            component.constructor.displayName + '.' + autoBindKey
+            Component.constructor.displayName + '.' + autoBindKey
           )
         );
       }
@@ -1701,7 +1701,7 @@
     },
   
     /**
-     * Checks whether or not this composite component is mounted.
+     * Checks whether or not this composite Component is mounted.
      * @return {boolean} True if mounted, false otherwise.
      * @protected
      * @final
@@ -1715,9 +1715,9 @@
             '%s is accessing isMounted inside its render() function. ' +
             'render() should be a pure function of props and state. It should ' +
             'never access something that requires stale data from the previous ' +
-            'render, such as refs. Move this logic to componentDidMount and ' +
-            'componentDidUpdate instead.',
-            owner.getName() || 'A component'
+            'render, such as refs. Move this logic to ComponentDidMount and ' +
+            'ComponentDidUpdate instead.',
+            owner.getName() || 'A Component'
           ) : null);
           owner._warnedAboutRefsInRender = true;
         }
@@ -1770,14 +1770,14 @@
   );
   
   /**
-   * Module for creating composite components.
+   * Module for creating composite Components.
    *
    * @class ReactClass
    */
   var ReactClass = {
   
     /**
-     * Creates a composite component class given a class specification.
+     * Creates a composite Component class given a class specification.
      *
      * @param {object} spec Class specification (which must define `render`).
      * @return {function} Component constructor function.
@@ -1791,7 +1791,7 @@
         if (true) {
           (true ? warning(
             this instanceof Constructor,
-            'Something is calling a React component directly. Use a factory or ' +
+            'Something is calling a React Component directly. Use a factory or ' +
             'JSX instead. See: https://fb.me/react-legacyfactory'
           ) : null);
         }
@@ -1806,7 +1806,7 @@
         this.state = null;
   
         // ReactClasses doesn't have constructors. Instead, they use the
-        // getInitialState and componentWillMount methods for initialization.
+        // getInitialState and ComponentWillMount methods for initialization.
   
         var initialState = this.getInitialState ? this.getInitialState() : null;
         if (true) {
@@ -1860,12 +1860,12 @@
   
       if (true) {
         (true ? warning(
-          !Constructor.prototype.componentShouldUpdate,
+          !Constructor.prototype.ComponentShouldUpdate,
           '%s has a method called ' +
-          'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' +
+          'ComponentShouldUpdate(). Did you mean shouldComponentUpdate()? ' +
           'The name is phrased as a question because the function is ' +
           'expected to return a value.',
-          spec.displayName || 'A component'
+          spec.displayName || 'A Component'
         ) : null);
       }
   
@@ -1989,8 +1989,8 @@
         }
   
         _createClass(WithStyles, [{
-          key: 'componentWillMount',
-          value: function componentWillMount() {
+          key: 'ComponentWillMount',
+          value: function ComponentWillMount() {
             if (_node_modulesReactLibExecutionEnvironment.canUseDOM) {
               (0, _node_modulesReactLibInvariant2['default'])(styles.use, 'The style-loader must be configured with reference-counted API.');
               styles.use();
@@ -1999,8 +1999,8 @@
             }
           }
         }, {
-          key: 'componentWillUnmount',
-          value: function componentWillUnmount() {
+          key: 'ComponentWillUnmount',
+          value: function ComponentWillUnmount() {
             styles.unuse();
             if (this.styleId) {
               this.refCount--;
@@ -2131,7 +2131,7 @@
   var ELEMENT_NODE_TYPE = 1;
   var DOC_NODE_TYPE = 9;
   
-  /** Mapping from reactRootID to React component instance. */
+  /** Mapping from reactRootID to React Component instance. */
   var instancesByReactRootID = {};
   
   /** Mapping from reactRootID to `container` nodes. */
@@ -2162,8 +2162,8 @@
   }
   
   /**
-   * @param {DOMElement} container DOM element that may contain a React component.
-   * @return {?string} A "reactRoot" ID, if a React component is rendered.
+   * @param {DOMElement} container DOM element that may contain a React Component.
+   * @return {?string} A "reactRoot" ID, if a React Component is rendered.
    */
   function getReactRootID(container) {
     var rootElement = getReactRootElementInContainer(container);
@@ -2320,37 +2320,37 @@
   }
   
   /**
-   * Mounts this component and inserts it into the DOM.
+   * Mounts this Component and inserts it into the DOM.
    *
-   * @param {ReactComponent} componentInstance The instance to mount.
+   * @param {ReactComponent} ComponentInstance The instance to mount.
    * @param {string} rootID DOM ID of the root node.
    * @param {DOMElement} container DOM element to mount into.
    * @param {ReactReconcileTransaction} transaction
    * @param {boolean} shouldReuseMarkup If true, do not insert markup
    */
   function mountComponentIntoNode(
-      componentInstance,
+      ComponentInstance,
       rootID,
       container,
       transaction,
       shouldReuseMarkup) {
     var markup = ReactReconciler.mountComponent(
-      componentInstance, rootID, transaction, emptyObject
+      ComponentInstance, rootID, transaction, emptyObject
     );
-    componentInstance._isTopLevel = true;
+    ComponentInstance._isTopLevel = true;
     ReactMount._mountImageIntoNode(markup, container, shouldReuseMarkup);
   }
   
   /**
    * Batched mount.
    *
-   * @param {ReactComponent} componentInstance The instance to mount.
+   * @param {ReactComponent} ComponentInstance The instance to mount.
    * @param {string} rootID DOM ID of the root node.
    * @param {DOMElement} container DOM element to mount into.
    * @param {boolean} shouldReuseMarkup If true, do not insert markup
    */
   function batchedMountComponentIntoNode(
-      componentInstance,
+      ComponentInstance,
       rootID,
       container,
       shouldReuseMarkup) {
@@ -2358,7 +2358,7 @@
     transaction.perform(
       mountComponentIntoNode,
       null,
-      componentInstance,
+      ComponentInstance,
       rootID,
       container,
       transaction,
@@ -2368,18 +2368,18 @@
   }
   
   /**
-   * Mounting is the process of initializing a React component by creating its
+   * Mounting is the process of initializing a React Component by creating its
    * representative DOM elements and inserting them into a supplied `container`.
    * Any prior content inside `container` is destroyed in the process.
    *
    *   ReactMount.render(
-   *     component,
+   *     Component,
    *     document.getElementById('container')
    *   );
    *
    *   <div id="container">                   <-- Supplied `container`.
    *     <div data-reactid=".3">              <-- Rendered reactRoot of React
-   *       // ...                                 component.
+   *       // ...                                 Component.
    *     </div>
    *   </div>
    *
@@ -2390,7 +2390,7 @@
     _instancesByReactRootID: instancesByReactRootID,
   
     /**
-     * This is a hook provided to support rendering React components while
+     * This is a hook provided to support rendering React Components while
      * ensuring that the apparent scroll position of its `container` does not
      * change.
      *
@@ -2402,9 +2402,9 @@
     },
   
     /**
-     * Take a component that's already mounted into the DOM and replace its props
-     * @param {ReactComponent} prevComponent component instance already in the DOM
-     * @param {ReactElement} nextElement component instance to render
+     * Take a Component that's already mounted into the DOM and replace its props
+     * @param {ReactComponent} prevComponent Component instance already in the DOM
+     * @param {ReactElement} nextElement Component instance to render
      * @param {DOMElement} container container to render into
      * @param {?function} callback function triggered on completion
      */
@@ -2434,9 +2434,9 @@
     },
   
     /**
-     * Register a component into the instance map and starts scroll value
+     * Register a Component into the instance map and starts scroll value
      * monitoring
-     * @param {ReactComponent} nextComponent component instance to render
+     * @param {ReactComponent} nextComponent Component instance to render
      * @param {DOMElement} container container to render into
      * @return {string} reactRoot ID prefix
      */
@@ -2458,7 +2458,7 @@
     },
   
     /**
-     * Render a new component into the DOM.
+     * Render a new Component into the DOM.
      * @param {ReactElement} nextElement element to render
      * @param {DOMElement} container container to render into
      * @param {boolean} shouldReuseMarkup if we should skip the markup insertion
@@ -2475,24 +2475,24 @@
       (true ? warning(
         ReactCurrentOwner.current == null,
         '_renderNewRootComponent(): Render methods should be a pure function ' +
-        'of props and state; triggering nested component updates from ' +
+        'of props and state; triggering nested Component updates from ' +
         'render is not allowed. If necessary, trigger nested updates in ' +
-        'componentDidUpdate.'
+        'ComponentDidUpdate.'
       ) : null);
   
-      var componentInstance = instantiateReactComponent(nextElement, null);
+      var ComponentInstance = instantiateReactComponent(nextElement, null);
       var reactRootID = ReactMount._registerComponent(
-        componentInstance,
+        ComponentInstance,
         container
       );
   
       // The initial render is synchronous but any updates that happen during
-      // rendering, in componentWillMount or componentDidMount, will be batched
+      // rendering, in ComponentWillMount or ComponentDidMount, will be batched
       // according to the current batching strategy.
   
       ReactUpdates.batchedUpdates(
         batchedMountComponentIntoNode,
-        componentInstance,
+        ComponentInstance,
         reactRootID,
         container,
         shouldReuseMarkup
@@ -2504,15 +2504,15 @@
           getReactRootElementInContainer(container);
       }
   
-      return componentInstance;
+      return ComponentInstance;
     },
   
     /**
-     * Renders a React component into the DOM in the supplied `container`.
+     * Renders a React Component into the DOM in the supplied `container`.
      *
-     * If the React component was previously rendered into `container`, this will
+     * If the React Component was previously rendered into `container`, this will
      * perform an update on it and only mutate the DOM as necessary to reflect the
-     * latest React component.
+     * latest React Component.
      *
      * @param {ReactElement} nextElement Component element to render.
      * @param {DOMElement} container DOM element to render into.
@@ -2522,13 +2522,13 @@
     render: function(nextElement, container, callback) {
       (true ? invariant(
         ReactElement.isValidElement(nextElement),
-        'React.render(): Invalid component element.%s',
+        'React.render(): Invalid Component element.%s',
         (
           typeof nextElement === 'string' ?
             ' Instead of passing an element string, make sure to instantiate ' +
             'it by passing it to React.createElement.' :
           typeof nextElement === 'function' ?
-            ' Instead of passing a component class, make sure to instantiate ' +
+            ' Instead of passing a Component class, make sure to instantiate ' +
             'it by passing it to React.createElement.' :
           // Check if it quacks like an element
           nextElement != null && nextElement.props !== undefined ?
@@ -2579,23 +2579,23 @@
   
       var shouldReuseMarkup = containerHasReactMarkup && !prevComponent;
   
-      var component = ReactMount._renderNewRootComponent(
+      var Component = ReactMount._renderNewRootComponent(
         nextElement,
         container,
         shouldReuseMarkup
       ).getPublicInstance();
       if (callback) {
-        callback.call(component);
+        callback.call(Component);
       }
-      return component;
+      return Component;
     },
   
     /**
-     * Constructs a component instance of `constructor` with `initialProps` and
+     * Constructs a Component instance of `constructor` with `initialProps` and
      * renders it into the supplied `container`.
      *
-     * @param {function} constructor React component constructor.
-     * @param {?object} props Initial props of the component instance.
+     * @param {function} constructor React Component constructor.
+     * @param {?object} props Initial props of the Component instance.
      * @param {DOMElement} container DOM element to render into.
      * @return {ReactComponent} Component instance rendered in `container`.
      */
@@ -2605,11 +2605,11 @@
     },
   
     /**
-     * Constructs a component instance of `constructor` with `initialProps` and
+     * Constructs a Component instance of `constructor` with `initialProps` and
      * renders it into a container node identified by supplied `id`.
      *
-     * @param {function} componentConstructor React component constructor
-     * @param {?object} props Initial props of the component instance.
+     * @param {function} ComponentConstructor React Component constructor
+     * @param {?object} props Initial props of the Component instance.
      * @param {string} id ID of the DOM element to render into.
      * @return {ReactComponent} Component instance rendered in the container node.
      */
@@ -2624,7 +2624,7 @@
     },
   
     /**
-     * Registers a container node into which React components will be rendered.
+     * Registers a container node into which React Components will be rendered.
      * This also creates the "reactRoot" ID that will be assigned to the element
      * rendered within.
      *
@@ -2646,10 +2646,10 @@
     },
   
     /**
-     * Unmounts and destroys the React component rendered in the `container`.
+     * Unmounts and destroys the React Component rendered in the `container`.
      *
-     * @param {DOMElement} container DOM element containing a React component.
-     * @return {boolean} True if a component was found in and unmounted from
+     * @param {DOMElement} container DOM element containing a React Component.
+     * @return {boolean} True if a Component was found in and unmounted from
      *                   `container`
      */
     unmountComponentAtNode: function(container) {
@@ -2660,9 +2660,9 @@
       (true ? warning(
         ReactCurrentOwner.current == null,
         'unmountComponentAtNode(): Render methods should be a pure function of ' +
-        'props and state; triggering nested component updates from render is ' +
+        'props and state; triggering nested Component updates from render is ' +
         'not allowed. If necessary, trigger nested updates in ' +
-        'componentDidUpdate.'
+        'ComponentDidUpdate.'
       ) : null);
   
       (true ? invariant(
@@ -2675,11 +2675,11 @@
       )));
   
       var reactRootID = getReactRootID(container);
-      var component = instancesByReactRootID[reactRootID];
-      if (!component) {
+      var Component = instancesByReactRootID[reactRootID];
+      if (!Component) {
         return false;
       }
-      ReactMount.unmountComponentFromNode(component, container);
+      ReactMount.unmountComponentFromNode(Component, container);
       delete instancesByReactRootID[reactRootID];
       delete containersByReactRootID[reactRootID];
       if (true) {
@@ -2689,9 +2689,9 @@
     },
   
     /**
-     * Unmounts a component and removes it from the DOM.
+     * Unmounts a Component and removes it from the DOM.
      *
-     * @param {ReactComponent} instance React component instance.
+     * @param {ReactComponent} instance React Component instance.
      * @param {DOMElement} container DOM element to unmount from.
      * @final
      * @internal
@@ -2711,10 +2711,10 @@
     },
   
     /**
-     * Finds the container DOM element that contains React component to which the
+     * Finds the container DOM element that contains React Component to which the
      * supplied DOM `id` belongs.
      *
-     * @param {string} id The ID of an element rendered by a React component.
+     * @param {string} id The ID of an element rendered by a React Component.
      * @return {?DOMElement} DOM element that contains the `id`.
      */
     findReactContainerForID: function(id) {
@@ -2757,8 +2757,8 @@
     /**
      * Finds an element rendered by React with the supplied ID.
      *
-     * @param {string} id ID of a DOM node in the React component.
-     * @return {DOMElement} Root DOM node of the React component.
+     * @param {string} id ID of a DOM node in the React Component.
+     * @return {DOMElement} Root DOM node of the React Component.
      */
     findReactNodeByID: function(id) {
       var reactRoot = ReactMount.findReactContainerForID(id);
@@ -2774,7 +2774,7 @@
      */
     isRenderedByReact: function(node) {
       if (node.nodeType !== 1) {
-        // Not a DOMElement, therefore not a React component
+        // Not a DOMElement, therefore not a React Component
         return false;
       }
       var id = ReactMount.getID(node);
@@ -2783,7 +2783,7 @@
   
     /**
      * Traverses up the ancestors of the supplied node to find a node that is a
-     * DOM representation of a React component.
+     * DOM representation of a React Component.
      *
      * @param {*} node
      * @return {?DOMEventTarget}
@@ -2806,7 +2806,7 @@
      * quickly.
      *
      * @param {DOMEventTarget} ancestorNode Search from this root.
-     * @pararm {string} targetID ID of the DOM representation of the component.
+     * @pararm {string} targetID ID of the DOM representation of the Component.
      * @return {DOMEventTarget} DOM node with the supplied `targetID`.
      * @internal
      */
@@ -2912,13 +2912,13 @@
   
           (true ? invariant(
             container.nodeType !== DOC_NODE_TYPE,
-            'You\'re trying to render a component to the document using ' +
+            'You\'re trying to render a Component to the document using ' +
             'server rendering but the checksum was invalid. This usually ' +
-            'means you rendered a different component type or props on ' +
+            'means you rendered a different Component type or props on ' +
             'the client from the one on the server, or your render() ' +
             'methods are impure. React cannot handle this case due to ' +
             'cross-browser quirks by rendering at the document root. You ' +
-            'should look for environment dependent code in your components ' +
+            'should look for environment dependent code in your Components ' +
             'and ensure the props are the same client and server side:\n%s',
             difference
           ) : invariant(container.nodeType !== DOC_NODE_TYPE));
@@ -2942,7 +2942,7 @@
   
       (true ? invariant(
         container.nodeType !== DOC_NODE_TYPE,
-        'You\'re trying to render a component to the document but ' +
+        'You\'re trying to render a Component to the document but ' +
           'you didn\'t use server rendering. We can\'t do this ' +
           'without using server rendering due to cross-browser quirks. ' +
           'See React.renderToString() for server rendering.'
@@ -3024,9 +3024,9 @@
     },
     close: function() {
       if (this.dirtyComponentsLength !== dirtyComponents.length) {
-        // Additional updates were enqueued by componentDidUpdate handlers or
+        // Additional updates were enqueued by ComponentDidUpdate handlers or
         // similar; before our own UPDATE_QUEUEING wrapper closes, we want to run
-        // these new updates so that if A's componentDidUpdate calls setState on
+        // these new updates so that if A's ComponentDidUpdate calls setState on
         // B, B will update before the callback A's updater provided when calling
         // setState.
         dirtyComponents.splice(0, this.dirtyComponentsLength);
@@ -3095,8 +3095,8 @@
   /**
    * Array comparator for ReactComponents by mount ordering.
    *
-   * @param {ReactComponent} c1 first component you're comparing
-   * @param {ReactComponent} c2 second component you're comparing
+   * @param {ReactComponent} c1 first Component you're comparing
+   * @param {ReactComponent} c2 second Component you're comparing
    * @return {number} Return value usable by Array.prototype.sort().
    */
   function mountOrderComparator(c1, c2) {
@@ -3107,31 +3107,31 @@
     var len = transaction.dirtyComponentsLength;
     (true ? invariant(
       len === dirtyComponents.length,
-      'Expected flush transaction\'s stored dirty-components length (%s) to ' +
-      'match dirty-components array length (%s).',
+      'Expected flush transaction\'s stored dirty-Components length (%s) to ' +
+      'match dirty-Components array length (%s).',
       len,
       dirtyComponents.length
     ) : invariant(len === dirtyComponents.length));
   
-    // Since reconciling a component higher in the owner hierarchy usually (not
+    // Since reconciling a Component higher in the owner hierarchy usually (not
     // always -- see shouldComponentUpdate()) will reconcile children, reconcile
     // them before their children by sorting the array.
     dirtyComponents.sort(mountOrderComparator);
   
     for (var i = 0; i < len; i++) {
-      // If a component is unmounted before pending changes apply, it will still
+      // If a Component is unmounted before pending changes apply, it will still
       // be here, but we assume that it has cleared its _pendingCallbacks and
       // that performUpdateIfNecessary is a noop.
-      var component = dirtyComponents[i];
+      var Component = dirtyComponents[i];
   
       // If performUpdateIfNecessary happens to enqueue any new updates, we
       // shouldn't execute the callbacks until the next render happens, so
       // stash the callbacks first
-      var callbacks = component._pendingCallbacks;
-      component._pendingCallbacks = null;
+      var callbacks = Component._pendingCallbacks;
+      Component._pendingCallbacks = null;
   
       ReactReconciler.performUpdateIfNecessary(
-        component,
+        Component,
         transaction.reconcileTransaction
       );
   
@@ -3139,7 +3139,7 @@
         for (var j = 0; j < callbacks.length; j++) {
           transaction.callbackQueue.enqueue(
             callbacks[j],
-            component.getPublicInstance()
+            Component.getPublicInstance()
           );
         }
       }
@@ -3149,7 +3149,7 @@
   var flushBatchedUpdates = function() {
     // ReactUpdatesFlushTransaction's wrappers will clear the dirtyComponents
     // array and perform any updates enqueued by mount-ready handlers (i.e.,
-    // componentDidUpdate) but we need to check here too in order to catch
+    // ComponentDidUpdate) but we need to check here too in order to catch
     // updates enqueued by setState callbacks and asap calls.
     while (dirtyComponents.length || asapEnqueued) {
       if (dirtyComponents.length) {
@@ -3174,31 +3174,31 @@
   );
   
   /**
-   * Mark a component as needing a rerender, adding an optional callback to a
+   * Mark a Component as needing a rerender, adding an optional callback to a
    * list of functions which will be executed once the rerender occurs.
    */
-  function enqueueUpdate(component) {
+  function enqueueUpdate(Component) {
     ensureInjected();
   
     // Various parts of our code (such as ReactCompositeComponent's
     // _renderValidatedComponent) assume that calls to render aren't nested;
     // verify that that's the case. (This is called by each top-level update
     // function, like setProps, setState, forceUpdate, etc.; creation and
-    // destruction of top-level components is guarded in ReactMount.)
+    // destruction of top-level Components is guarded in ReactMount.)
     (true ? warning(
       ReactCurrentOwner.current == null,
       'enqueueUpdate(): Render methods should be a pure function of props ' +
-      'and state; triggering nested component updates from render is not ' +
+      'and state; triggering nested Component updates from render is not ' +
       'allowed. If necessary, trigger nested updates in ' +
-      'componentDidUpdate.'
+      'ComponentDidUpdate.'
     ) : null);
   
     if (!batchingStrategy.isBatchingUpdates) {
-      batchingStrategy.batchedUpdates(enqueueUpdate, component);
+      batchingStrategy.batchedUpdates(enqueueUpdate, Component);
       return;
     }
   
-    dirtyComponents.push(component);
+    dirtyComponents.push(Component);
   }
   
   /**
@@ -3713,9 +3713,9 @@
   
   var ReactBrowserComponentMixin = {
     /**
-     * Returns the DOM node rendered by this component.
+     * Returns the DOM node rendered by this Component.
      *
-     * @return {DOMElement} The root node of this component.
+     * @return {DOMElement} The root node of this Component.
      * @final
      * @protected
      */
@@ -3747,10 +3747,10 @@
   /**
    * Keeps track of the current owner.
    *
-   * The current owner is the component who should own any components that are
+   * The current owner is the Component who should own any Components that are
    * currently being constructed.
    *
-   * The depth indicate how many composite components are above this render level.
+   * The depth indicate how many composite Components are above this render level.
    */
   var ReactCurrentOwner = {
   
@@ -4844,7 +4844,7 @@
   var MAX_TREE_DEPTH = 100;
   
   /**
-   * Creates a DOM ID prefix to use when mounting React components.
+   * Creates a DOM ID prefix to use when mounting React Components.
    *
    * @param {number} index A unique integer
    * @return {string} React root ID.
@@ -4897,7 +4897,7 @@
   /**
    * Gets the parent ID of the supplied React DOM ID, `id`.
    *
-   * @param {string} id ID of a component.
+   * @param {string} id ID of a Component.
    * @return {string} ID of the parent, or an empty string.
    * @private
    */
@@ -5029,7 +5029,7 @@
   }
   
   /**
-   * Manages the IDs assigned to DOM representations of React components. This
+   * Manages the IDs assigned to DOM representations of React Components. This
    * uses a specific scheme in order to traverse the DOM efficiently (e.g. in
    * order to simulate events).
    *
@@ -5048,8 +5048,8 @@
     /**
      * Constructs a React ID by joining a root ID with a name.
      *
-     * @param {string} rootID Root ID of a parent component.
-     * @param {string} name A component's name (as flattened children).
+     * @param {string} rootID Root ID of a parent Component.
+     * @param {string} name A Component's name (as flattened children).
      * @return {string} A React ID.
      * @internal
      */
@@ -5058,11 +5058,11 @@
     },
   
     /**
-     * Gets the DOM ID of the React component that is the root of the tree that
-     * contains the React component with the supplied DOM ID.
+     * Gets the DOM ID of the React Component that is the root of the tree that
+     * contains the React Component with the supplied DOM ID.
      *
-     * @param {string} id DOM ID of a React component.
-     * @return {?string} DOM ID of the React component that is the root.
+     * @param {string} id DOM ID of a React Component.
+     * @return {?string} DOM ID of the React Component that is the root.
      * @internal
      */
     getReactRootIDFromNodeID: function(id) {
@@ -5225,7 +5225,7 @@
   var ReactElementValidator = __webpack_require__(42);
   
   /**
-   * Helper to call ReactRef.attachRefs with this composite component, split out
+   * Helper to call ReactRef.attachRefs with this composite Component, split out
    * to avoid allocations in the transaction mount-ready queue.
    */
   function attachRefs() {
@@ -5235,7 +5235,7 @@
   var ReactReconciler = {
   
     /**
-     * Initializes the component, renders markup, and registers event listeners.
+     * Initializes the Component, renders markup, and registers event listeners.
      *
      * @param {ReactComponent} internalInstance
      * @param {string} rootID DOM ID of the root node.
@@ -5267,7 +5267,7 @@
     },
   
     /**
-     * Update a component using a new element.
+     * Update a Component using a new element.
      *
      * @param {ReactComponent} internalInstance
      * @param {ReactElement} nextElement
@@ -5312,7 +5312,7 @@
     },
   
     /**
-     * Flush any dirty changes in a component.
+     * Flush any dirty changes in a Component.
      *
      * @param {ReactComponent} internalInstance
      * @param {ReactReconcileTransaction} transaction
@@ -5801,7 +5801,7 @@
      * native browser events.
      *
      * @param {string} topLevelType Record from `EventConstants`.
-     * @param {DOMEventTarget} topLevelTarget The listening component root node.
+     * @param {DOMEventTarget} topLevelTarget The listening Component root node.
      * @param {string} topLevelTargetID ID of `topLevelTarget`.
      * @param {object} nativeEvent Native browser event.
      * @return {*} An accumulation of synthetic events.
@@ -6187,7 +6187,7 @@
     if (element &&
         element._owner &&
         element._owner !== ReactCurrentOwner.current) {
-      // Name of the component that originally created this child.
+      // Name of the Component that originally created this child.
       var childOwnerName = getName(element._owner);
   
       childOwnerAddendum = (" It was passed a child from " + childOwnerName + ".");
@@ -6248,13 +6248,13 @@
   /**
    * Assert that the props are valid
    *
-   * @param {string} componentName Name of the component for error messages.
+   * @param {string} ComponentName Name of the Component for error messages.
    * @param {object} propTypes Map of prop name to a ReactPropType
    * @param {object} props
    * @param {string} location e.g. "prop", "context", "child context"
    * @private
    */
-  function checkPropTypes(componentName, propTypes, props, location) {
+  function checkPropTypes(ComponentName, propTypes, props, location) {
     for (var propName in propTypes) {
       if (propTypes.hasOwnProperty(propName)) {
         var error;
@@ -6268,11 +6268,11 @@
             typeof propTypes[propName] === 'function',
             '%s: %s type `%s` is invalid; it must be a function, usually from ' +
             'React.PropTypes.',
-            componentName || 'React class',
+            ComponentName || 'React class',
             ReactPropTypeLocationNames[location],
             propName
           ) : invariant(typeof propTypes[propName] === 'function'));
-          error = propTypes[propName](props, propName, componentName, location);
+          error = propTypes[propName](props, propName, ComponentName, location);
         } catch (ex) {
           error = ex;
         }
@@ -6319,7 +6319,7 @@
   
     (true ? warning(
       false,
-      'Don\'t set .props.%s of the React component%s. Instead, specify the ' +
+      'Don\'t set .props.%s of the React Component%s. Instead, specify the ' +
       'correct value when initially creating the element or use ' +
       'React.cloneElement to make a new element with updated props.%s',
       propName,
@@ -6383,25 +6383,25 @@
       // This has already warned. Don't throw.
       return;
     }
-    // Extract the component class from the element. Converts string types
+    // Extract the Component class from the element. Converts string types
     // to a composite class which may have propTypes.
     // TODO: Validating a string's propTypes is not decoupled from the
     // rendering target which is problematic.
-    var componentClass = ReactNativeComponent.getComponentClassForElement(
+    var ComponentClass = ReactNativeComponent.getComponentClassForElement(
       element
     );
-    var name = componentClass.displayName || componentClass.name;
-    if (componentClass.propTypes) {
+    var name = ComponentClass.displayName || ComponentClass.name;
+    if (ComponentClass.propTypes) {
       checkPropTypes(
         name,
-        componentClass.propTypes,
+        ComponentClass.propTypes,
         element.props,
         ReactPropTypeLocations.prop
       );
     }
-    if (typeof componentClass.getDefaultProps === 'function') {
+    if (typeof ComponentClass.getDefaultProps === 'function') {
       (true ? warning(
-        componentClass.getDefaultProps.isReactClassApproved,
+        ComponentClass.getDefaultProps.isReactClassApproved,
         'getDefaultProps is only used on classic React.createClass ' +
         'definitions. Use a static property named `defaultProps` instead.'
       ) : null);
@@ -6419,7 +6419,7 @@
         type != null,
         'React.createElement: type should not be null or undefined. It should ' +
           'be a string (for DOM elements) or a ReactClass (for composite ' +
-          'components).'
+          'Components).'
       ) : null);
   
       var element = ReactElement.createElement.apply(this, arguments);
@@ -6741,7 +6741,7 @@
   var focusNode = __webpack_require__(120);
   
   var AutoFocusMixin = {
-    componentDidMount: function() {
+    ComponentDidMount: function() {
       if (this.props.autoFocus) {
         focusNode(this.getDOMNode());
       }
@@ -6775,7 +6775,7 @@
   /**
    * We used to allow keyed objects to serve as a collection of ReactElements,
    * or nested sets. This allowed us a way to explicitly key a set a fragment of
-   * components. This is now being replaced with an opaque data structure.
+   * Components. This is now being replaced with an opaque data structure.
    * The upgrade path is to call React.addons.createFragment({ key: value }) to
    * create a keyed fragment. The resulting data structure is opaque, for now.
    */
@@ -6967,18 +6967,18 @@
   var ReactNativeComponentInjection = {
     // This accepts a class that receives the tag string. This is a catch all
     // that can render any kind of tag.
-    injectGenericComponentClass: function(componentClass) {
-      genericComponentClass = componentClass;
+    injectGenericComponentClass: function(ComponentClass) {
+      genericComponentClass = ComponentClass;
     },
-    // This accepts a text component class that takes the text string to be
+    // This accepts a text Component class that takes the text string to be
     // rendered as props.
-    injectTextComponentClass: function(componentClass) {
-      textComponentClass = componentClass;
+    injectTextComponentClass: function(ComponentClass) {
+      textComponentClass = ComponentClass;
     },
     // This accepts a keyed object with classes as values. Each key represents a
     // tag. That particular tag will use this class instead of the generic one.
-    injectComponentClasses: function(componentClasses) {
-      assign(tagToComponentClass, componentClasses);
+    injectComponentClasses: function(ComponentClasses) {
+      assign(tagToComponentClass, ComponentClasses);
     },
     // Temporary hack since we expect DOM refs to behave like composites,
     // for this release.
@@ -6988,7 +6988,7 @@
   };
   
   /**
-   * Get a composite component wrapper class for a specific tag.
+   * Get a composite Component wrapper class for a specific tag.
    *
    * @param {ReactElement} element The tag for which to get the class.
    * @return {function} The React class constructor function.
@@ -6998,15 +6998,15 @@
       return element.type;
     }
     var tag = element.type;
-    var componentClass = tagToComponentClass[tag];
-    if (componentClass == null) {
-      tagToComponentClass[tag] = componentClass = autoGenerateWrapperClass(tag);
+    var ComponentClass = tagToComponentClass[tag];
+    if (ComponentClass == null) {
+      tagToComponentClass[tag] = ComponentClass = autoGenerateWrapperClass(tag);
     }
-    return componentClass;
+    return ComponentClass;
   }
   
   /**
-   * Get a native internal component class for a specific tag.
+   * Get a native internal Component class for a specific tag.
    *
    * @param {ReactElement} element The element to create.
    * @return {function} The internal class constructor function.
@@ -7014,7 +7014,7 @@
   function createInternalComponent(element) {
     (true ? invariant(
       genericComponentClass,
-      'There is no registered component for the tag %s',
+      'There is no registered Component for the tag %s',
       element.type
     ) : invariant(genericComponentClass));
     return new genericComponentClass(element.type, element.props);
@@ -7029,11 +7029,11 @@
   }
   
   /**
-   * @param {ReactComponent} component
+   * @param {ReactComponent} Component
    * @return {boolean}
    */
-  function isTextComponent(component) {
-    return component instanceof textComponentClass;
+  function isTextComponent(Component) {
+    return Component instanceof textComponentClass;
   }
   
   var ReactNativeComponent = {
@@ -7225,7 +7225,7 @@
    *   while guaranteeing that afterwards, the event system is reactivated.
    * - Flushing a queue of collected DOM mutations to the main UI thread after a
    *   reconciliation takes place in a worker thread.
-   * - Invoking any collected `componentDidUpdate` callbacks after rendering new
+   * - Invoking any collected `ComponentDidUpdate` callbacks after rendering new
    *   content.
    * - (Future use case): Wrapping particular flushes of the `ReactWorker` queue
    *   to preserve the `scrollTop` (an automatic scroll aware DOM).
@@ -7826,7 +7826,7 @@
   var invariant = __webpack_require__(2);
   
   /**
-   * A specialized pseudo-event module to help keep track of components waiting to
+   * A specialized pseudo-event module to help keep track of Components waiting to
    * be notified when their DOM representations are available for use.
    *
    * This implements `PooledClass`, so you should never need to instantiate this.
@@ -7859,7 +7859,7 @@
   
     /**
      * Invokes all enqueued callbacks and clears the queue. This is invoked after
-     * the DOM representation of a component has been created or updated.
+     * the DOM representation of a Component has been created or updated.
      *
      * @internal
      */
@@ -8204,12 +8204,12 @@
   
   /**
    * Provide a linked `value` attribute for controlled forms. You should not use
-   * this outside of the ReactDOM controlled form components.
+   * this outside of the ReactDOM controlled form Components.
    */
   var LinkedValueUtils = {
     Mixin: {
       propTypes: {
-        value: function(props, propName, componentName) {
+        value: function(props, propName, ComponentName) {
           if (!props[propName] ||
               hasReadOnlyValue[props.type] ||
               props.onChange ||
@@ -8224,7 +8224,7 @@
             'set either `onChange` or `readOnly`.'
           );
         },
-        checked: function(props, propName, componentName) {
+        checked: function(props, propName, ComponentName) {
           if (!props[propName] ||
               props.onChange ||
               props.readOnly ||
@@ -8243,7 +8243,7 @@
     },
   
     /**
-     * @param {ReactComponent} input Form component
+     * @param {ReactComponent} input Form Component
      * @return {*} current value of the input either from value prop or link.
      */
     getValue: function(input) {
@@ -8255,7 +8255,7 @@
     },
   
     /**
-     * @param {ReactComponent} input Form component
+     * @param {ReactComponent} input Form Component
      * @return {*} current checked status of the input either from checked prop
      *             or link.
      */
@@ -8268,7 +8268,7 @@
     },
   
     /**
-     * @param {ReactComponent} input Form component
+     * @param {ReactComponent} input Form Component
      * @return {function} change callback either from onChange prop or link.
      */
     getOnChange: function(input) {
@@ -8316,7 +8316,7 @@
   var LocalEventTrapMixin = {
     trapBubbledEvent:function(topLevelType, handlerBaseName) {
       (true ? invariant(this.isMounted(), 'Must be mounted to trap events') : invariant(this.isMounted()));
-      // If a component renders to null or if another component fatals and causes
+      // If a Component renders to null or if another Component fatals and causes
       // the state of the tree to be corrupted, `node` here can be null.
       var node = this.getDOMNode();
       (true ? invariant(
@@ -8335,7 +8335,7 @@
     // trapCapturedEvent would look nearly identical. We don't implement that
     // method because it isn't currently needed.
   
-    componentWillUnmount:function() {
+    ComponentWillUnmount:function() {
       if (this._localEventListeners) {
         forEachAccumulated(this._localEventListeners, remove);
       }
@@ -8421,7 +8421,7 @@
   
     /**
      * Optionally injectable environment dependent cleanup hook. (server vs.
-     * browser etc). Example: A browser system caches DOM nodes based on component
+     * browser etc). Example: A browser system caches DOM nodes based on Component
      * ID and must remove that cache entry when this instance is unmounted.
      */
     unmountIDFromEnvironment: null,
@@ -8485,7 +8485,7 @@
   /**
    * Keeps track of the current context.
    *
-   * The context is automatically passed down the component ownership hierarchy
+   * The context is automatically passed down the Component ownership hierarchy
    * and is accessible via `this.context` on ReactCompositeComponents.
    */
   var ReactContext = {
@@ -8517,7 +8517,7 @@
         (true ? warning(
           didWarn,
           'withContext is deprecated and will be removed in a future version. ' +
-          'Use a wrapper component with getChildContext instead.'
+          'Use a wrapper Component with getChildContext instead.'
         ) : null);
   
         didWarn = true;
@@ -8622,7 +8622,7 @@
       ) : null);
       (true ? warning(
         !props.contentEditable || props.children == null,
-        'A component is `contentEditable` and contains `children` managed by ' +
+        'A Component is `contentEditable` and contains `children` managed by ' +
         'React. It is now your responsibility to guarantee that none of ' +
         'those nodes are unexpectedly modified or duplicated. This is ' +
         'probably not intentional.'
@@ -8698,7 +8698,7 @@
   
   /**
    * Creates a new React class that is idempotent and capable of containing other
-   * React components. It accepts event listeners and DOM properties that are
+   * React Components. It accepts event listeners and DOM properties that are
    * valid according to `DOMProperty`.
    *
    *  - Event listeners: `onClick`, `onMouseDown`, etc.
@@ -8849,7 +8849,7 @@
     },
   
     /**
-     * Updates a native DOM component after it has already been allocated and
+     * Updates a native DOM Component after it has already been allocated and
      * attached to the DOM. Reconciles the root DOM node, then recurses.
      *
      * @param {ReactReconcileTransaction} transaction
@@ -9073,32 +9073,32 @@
   
   var invariant = __webpack_require__(2);
   
-  var component;
-  // This registry keeps track of the React IDs of the components that rendered to
+  var Component;
+  // This registry keeps track of the React IDs of the Components that rendered to
   // `null` (in reality a placeholder such as `noscript`)
   var nullComponentIDsRegistry = {};
   
   var ReactEmptyComponentInjection = {
     injectEmptyComponent: function(emptyComponent) {
-      component = ReactElement.createFactory(emptyComponent);
+      Component = ReactElement.createFactory(emptyComponent);
     }
   };
   
   var ReactEmptyComponentType = function() {};
-  ReactEmptyComponentType.prototype.componentDidMount = function() {
+  ReactEmptyComponentType.prototype.ComponentDidMount = function() {
     var internalInstance = ReactInstanceMap.get(this);
     // TODO: Make sure we run these methods in the correct order, we shouldn't
     // need this check. We're going to assume if we're here it means we ran
-    // componentWillUnmount already so there is no internal instance (it gets
+    // ComponentWillUnmount already so there is no internal instance (it gets
     // removed as part of the unmounting process).
     if (!internalInstance) {
       return;
     }
     registerNullComponentID(internalInstance._rootNodeID);
   };
-  ReactEmptyComponentType.prototype.componentWillUnmount = function() {
+  ReactEmptyComponentType.prototype.ComponentWillUnmount = function() {
     var internalInstance = ReactInstanceMap.get(this);
-    // TODO: Get rid of this check. See TODO in componentDidMount.
+    // TODO: Get rid of this check. See TODO in ComponentDidMount.
     if (!internalInstance) {
       return;
     }
@@ -9106,17 +9106,17 @@
   };
   ReactEmptyComponentType.prototype.render = function() {
     (true ? invariant(
-      component,
-      'Trying to return null from a render, but no null placeholder component ' +
+      Component,
+      'Trying to return null from a render, but no null placeholder Component ' +
       'was injected.'
-    ) : invariant(component));
-    return component();
+    ) : invariant(Component));
+    return Component();
   };
   
   var emptyElement = ReactElement.createElement(ReactEmptyComponentType);
   
   /**
-   * Mark the component as having rendered to null.
+   * Mark the Component as having rendered to null.
    * @param {string} id Component's `_rootNodeID`.
    */
   function registerNullComponentID(id) {
@@ -9124,7 +9124,7 @@
   }
   
   /**
-   * Unmark the component as having rendered to null: it renders to something now.
+   * Unmark the Component as having rendered to null: it renders to something now.
    * @param {string} id Component's `_rootNodeID`.
    */
   function deregisterNullComponentID(id) {
@@ -9133,7 +9133,7 @@
   
   /**
    * @param {string} id Component's `_rootNodeID`.
-   * @return {boolean} True if the component is rendered to null.
+   * @return {boolean} True if the Component is rendered to null.
    */
   function isNullComponentID(id) {
     return !!nullComponentIDsRegistry[id];
@@ -9166,7 +9166,7 @@
   'use strict';
   
   /**
-   * This module manages the bookkeeping when a component is in the process
+   * This module manages the bookkeeping when a Component is in the process
    * of being mounted or being unmounted. This is used as a way to enforce
    * invariants (or warnings) when it is not recommended to call
    * setState/forceUpdate.
@@ -9246,7 +9246,7 @@
   
   function enqueueUpdate(internalInstance) {
     if (internalInstance !== ReactLifeCycle.currentlyMountingInstance) {
-      // If we're in a componentWillMount handler, don't enqueue a rerender
+      // If we're in a ComponentWillMount handler, don't enqueue a rerender
       // because ReactUpdates assumes we're in a browser context (which is
       // wrong for server rendering) and we're about to do a render anyway.
       // See bug in #1740.
@@ -9271,9 +9271,9 @@
         // there because we already warned for the corresponding lifecycle method.
         (true ? warning(
           !callerName,
-          '%s(...): Can only update a mounted or mounting component. ' +
+          '%s(...): Can only update a mounted or mounting Component. ' +
           'This usually means you called %s() on an unmounted ' +
-          'component. This is a no-op.',
+          'Component. This is a no-op.',
           callerName,
           callerName
         ) : null);
@@ -9314,7 +9314,7 @@
       // Previously we would throw an error if we didn't have an internal
       // instance. Since we want to make it a no-op instead, we mirror the same
       // behavior we have in other enqueue* methods.
-      // We also need to ignore callbacks in componentWillMount. See
+      // We also need to ignore callbacks in ComponentWillMount. See
       // enqueueUpdates.
       if (!internalInstance ||
           internalInstance === ReactLifeCycle.currentlyMountingInstance) {
@@ -9327,9 +9327,9 @@
         internalInstance._pendingCallbacks = [callback];
       }
       // TODO: The callback here is ignored when setState is called from
-      // componentWillMount. Either fix it or disallow doing so completely in
+      // ComponentWillMount. Either fix it or disallow doing so completely in
       // favor of getInitialState. Alternatively, we can disallow
-      // componentWillMount during server-side rendering.
+      // ComponentWillMount during server-side rendering.
       enqueueUpdate(internalInstance);
     },
   
@@ -9353,10 +9353,10 @@
      * certainty that we are **not** in a DOM transaction.
      *
      * You may want to call this when you know that some deeper aspect of the
-     * component's state has changed but `setState` was not called.
+     * Component's state has changed but `setState` was not called.
      *
      * This will not invoke `shouldUpdateComponent`, but it will invoke
-     * `componentWillUpdate` and `componentDidUpdate`.
+     * `ComponentWillUpdate` and `ComponentDidUpdate`.
      *
      * @param {ReactClass} publicInstance The instance that should rerender.
      * @internal
@@ -9451,9 +9451,9 @@
       (true ? invariant(
         internalInstance._isTopLevel,
         'setProps(...): You called `setProps` on a ' +
-        'component with a parent. This is an anti-pattern since props will ' +
+        'Component with a parent. This is an anti-pattern since props will ' +
         'get reactively updated when rendered. Instead, change the owner\'s ' +
-        '`render` method to pass the correct value as props to the component ' +
+        '`render` method to pass the correct value as props to the Component ' +
         'where it is created.'
       ) : invariant(internalInstance._isTopLevel));
   
@@ -9490,9 +9490,9 @@
       (true ? invariant(
         internalInstance._isTopLevel,
         'replaceProps(...): You called `replaceProps` on a ' +
-        'component with a parent. This is an anti-pattern since props will ' +
+        'Component with a parent. This is an anti-pattern since props will ' +
         'get reactively updated when rendered. Instead, change the owner\'s ' +
-        '`render` method to pass the correct value as props to the component ' +
+        '`render` method to pass the correct value as props to the Component ' +
         'where it is created.'
       ) : invariant(internalInstance._isTopLevel));
   
@@ -9836,7 +9836,7 @@
         (true ? warning(
           element && (typeof element.type === 'function' ||
                       typeof element.type === 'string'),
-          'Only functions or strings can be mounted as React components.'
+          'Only functions or strings can be mounted as React Components.'
         ) : null);
       }
   
@@ -9845,10 +9845,10 @@
           typeof element.type === 'string') {
         // Avoid recursion if the wrapper renders itself.
         instance = ReactNativeComponent.createInternalComponent(element);
-        // All native components are currently wrapped in a composite so we're
+        // All native Components are currently wrapped in a composite so we're
         // safe to assume that this is what we should instantiate.
       } else if (isInternalComponentType(element.type)) {
-        // This is temporarily available for custom components that are not string
+        // This is temporarily available for custom Components that are not string
         // represenations. I.e. ART. Once those are updated to use the string
         // representation, we can drop this code path.
         instance = new element.type(element);
@@ -9879,7 +9879,7 @@
     instance.construct(node);
   
     // These two fields are used by the DOM and ART diffing algorithms
-    // respectively. Instead of using expandos on components, we should be
+    // respectively. Instead of using expandos on Components, we should be
     // storing the state needed by the diffing algorithms elsewhere.
     instance._mountIndex = 0;
     instance._mountImage = null;
@@ -11387,7 +11387,7 @@
           var expansion = CSSProperty.shorthandPropertyExpansions[styleName];
           if (expansion) {
             // Shorthand property that IE8 won't like unsetting, so unset each
-            // component to placate it
+            // Component to placate it
             for (var individualStyleName in expansion) {
               style[individualStyleName] = '';
             }
@@ -11708,7 +11708,7 @@
   var warning = __webpack_require__(6);
   
   /**
-   * Base class helpers for the updating state of a component.
+   * Base class helpers for the updating state of a Component.
    */
   function ReactComponent(props, context) {
     this.props = props;
@@ -11729,7 +11729,7 @@
    *
    * When a function is provided to setState, it will be called at some point in
    * the future (not synchronously). It will be called with the up to date
-   * component arguments (state, props, context). These values can be different
+   * Component arguments (state, props, context). These values can be different
    * from this.* because your function may be called after receiveProps but before
    * shouldComponentUpdate, and this new state, props, and context will not yet be
    * assigned to this.
@@ -11768,10 +11768,10 @@
    * certainty that we are **not** in a DOM transaction.
    *
    * You may want to call this when you know that some deeper aspect of the
-   * component's state has changed but `setState` was not called.
+   * Component's state has changed but `setState` was not called.
    *
    * This will not invoke `shouldComponentUpdate`, but it will invoke
-   * `componentWillUpdate` and `componentDidUpdate`.
+   * `ComponentWillUpdate` and `ComponentDidUpdate`.
    *
    * @param {?function} callback Called after update is complete.
    * @final
@@ -11793,12 +11793,12 @@
     var deprecatedAPIs = {
       getDOMNode: [
         'getDOMNode',
-        'Use React.findDOMNode(component) instead.'
+        'Use React.findDOMNode(Component) instead.'
       ],
       isMounted: [
         'isMounted',
         'Instead, make sure to clean up subscriptions and pending requests in ' +
-        'componentWillUnmount to prevent memory leaks.'
+        'ComponentWillUnmount to prevent memory leaks.'
       ],
       replaceProps: [
         'replaceProps',
@@ -11984,7 +11984,7 @@
     },
   
     /**
-     * Updates a component's children by processing a series of updates.
+     * Updates a Component's children by processing a series of updates.
      *
      * @param {array<object>} updates List of update configurations.
      * @param {array<string>} markup List of markup strings.
@@ -12038,15 +12038,15 @@
   var escapeTextContentForBrowser = __webpack_require__(56);
   
   /**
-   * Text nodes violate a couple assumptions that React makes about components:
+   * Text nodes violate a couple assumptions that React makes about Components:
    *
    *  - When mounting text into the DOM, adjacent text nodes are merged.
    *  - Text nodes cannot be assigned a React root ID.
    *
-   * This component is used to wrap strings in elements so that they can undergo
+   * This Component is used to wrap strings in elements so that they can undergo
    * the same reconciliation that is applied to elements.
    *
-   * TODO: Investigate representing React components in the DOM with text nodes.
+   * TODO: Investigate representing React Components in the DOM with text nodes.
    *
    * @class ReactDOMTextComponent
    * @extends ReactComponent
@@ -12100,7 +12100,7 @@
     },
   
     /**
-     * Updates this component by updating the text content.
+     * Updates this Component by updating the text content.
      *
      * @param {ReactText} nextText The next text content
      * @param {ReactReconcileTransaction} transaction
@@ -12113,7 +12113,7 @@
         if (nextStringText !== this._stringText) {
           // TODO: Save this as pending props and use performUpdateIfNecessary
           // and/or updateComponent to do the actual update for consistency with
-          // other component types?
+          // other Component types?
           this._stringText = nextStringText;
           ReactDOMComponent.BackendIDOperations.updateTextContentByID(
             this._rootNodeID,
@@ -12343,7 +12343,7 @@
   var keyMirror = __webpack_require__(37);
   
   /**
-   * When a component's children are updated, a series of update configuration
+   * When a Component's children are updated, a series of update configuration
    * objects are created in order to batch and serialize the required changes.
    *
    * Enumerates all the possible types of update configurations.
@@ -12385,7 +12385,7 @@
   
   /**
    * Collection of methods that allow declaration and validation of props that are
-   * supplied to React components. Example usage:
+   * supplied to React Components. Example usage:
    *
    *   var Props = require('ReactPropTypes');
    *   var MyArticle = React.createClass({
@@ -12413,13 +12413,13 @@
    *  var MyLink = React.createClass({
    *    propTypes: {
    *      // An optional string or URI prop named "href".
-   *      href: function(props, propName, componentName) {
+   *      href: function(props, propName, ComponentName) {
    *        var propValue = props[propName];
    *        if (propValue != null && typeof propValue !== 'string' &&
    *            !(propValue instanceof URI)) {
    *          return new Error(
    *            'Expected a string or an URI for ' + propName + ' in ' +
-   *            componentName
+   *            ComponentName
    *          );
    *        }
    *      }
@@ -12455,19 +12455,19 @@
   };
   
   function createChainableTypeChecker(validate) {
-    function checkType(isRequired, props, propName, componentName, location) {
-      componentName = componentName || ANONYMOUS;
+    function checkType(isRequired, props, propName, ComponentName, location) {
+      ComponentName = ComponentName || ANONYMOUS;
       if (props[propName] == null) {
         var locationName = ReactPropTypeLocationNames[location];
         if (isRequired) {
           return new Error(
             ("Required " + locationName + " `" + propName + "` was not specified in ") +
-            ("`" + componentName + "`.")
+            ("`" + ComponentName + "`.")
           );
         }
         return null;
       } else {
-        return validate(props, propName, componentName, location);
+        return validate(props, propName, ComponentName, location);
       }
     }
   
@@ -12478,7 +12478,7 @@
   }
   
   function createPrimitiveTypeChecker(expectedType) {
-    function validate(props, propName, componentName, location) {
+    function validate(props, propName, ComponentName, location) {
       var propValue = props[propName];
       var propType = getPropType(propValue);
       if (propType !== expectedType) {
@@ -12490,7 +12490,7 @@
   
         return new Error(
           ("Invalid " + locationName + " `" + propName + "` of type `" + preciseType + "` ") +
-          ("supplied to `" + componentName + "`, expected `" + expectedType + "`.")
+          ("supplied to `" + ComponentName + "`, expected `" + expectedType + "`.")
         );
       }
       return null;
@@ -12503,18 +12503,18 @@
   }
   
   function createArrayOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location) {
+    function validate(props, propName, ComponentName, location) {
       var propValue = props[propName];
       if (!Array.isArray(propValue)) {
         var locationName = ReactPropTypeLocationNames[location];
         var propType = getPropType(propValue);
         return new Error(
           ("Invalid " + locationName + " `" + propName + "` of type ") +
-          ("`" + propType + "` supplied to `" + componentName + "`, expected an array.")
+          ("`" + propType + "` supplied to `" + ComponentName + "`, expected an array.")
         );
       }
       for (var i = 0; i < propValue.length; i++) {
-        var error = typeChecker(propValue, i, componentName, location);
+        var error = typeChecker(propValue, i, ComponentName, location);
         if (error instanceof Error) {
           return error;
         }
@@ -12525,12 +12525,12 @@
   }
   
   function createElementTypeChecker() {
-    function validate(props, propName, componentName, location) {
+    function validate(props, propName, ComponentName, location) {
       if (!ReactElement.isValidElement(props[propName])) {
         var locationName = ReactPropTypeLocationNames[location];
         return new Error(
           ("Invalid " + locationName + " `" + propName + "` supplied to ") +
-          ("`" + componentName + "`, expected a ReactElement.")
+          ("`" + ComponentName + "`, expected a ReactElement.")
         );
       }
       return null;
@@ -12539,13 +12539,13 @@
   }
   
   function createInstanceTypeChecker(expectedClass) {
-    function validate(props, propName, componentName, location) {
+    function validate(props, propName, ComponentName, location) {
       if (!(props[propName] instanceof expectedClass)) {
         var locationName = ReactPropTypeLocationNames[location];
         var expectedClassName = expectedClass.name || ANONYMOUS;
         return new Error(
           ("Invalid " + locationName + " `" + propName + "` supplied to ") +
-          ("`" + componentName + "`, expected instance of `" + expectedClassName + "`.")
+          ("`" + ComponentName + "`, expected instance of `" + expectedClassName + "`.")
         );
       }
       return null;
@@ -12554,7 +12554,7 @@
   }
   
   function createEnumTypeChecker(expectedValues) {
-    function validate(props, propName, componentName, location) {
+    function validate(props, propName, ComponentName, location) {
       var propValue = props[propName];
       for (var i = 0; i < expectedValues.length; i++) {
         if (propValue === expectedValues[i]) {
@@ -12566,26 +12566,26 @@
       var valuesString = JSON.stringify(expectedValues);
       return new Error(
         ("Invalid " + locationName + " `" + propName + "` of value `" + propValue + "` ") +
-        ("supplied to `" + componentName + "`, expected one of " + valuesString + ".")
+        ("supplied to `" + ComponentName + "`, expected one of " + valuesString + ".")
       );
     }
     return createChainableTypeChecker(validate);
   }
   
   function createObjectOfTypeChecker(typeChecker) {
-    function validate(props, propName, componentName, location) {
+    function validate(props, propName, ComponentName, location) {
       var propValue = props[propName];
       var propType = getPropType(propValue);
       if (propType !== 'object') {
         var locationName = ReactPropTypeLocationNames[location];
         return new Error(
           ("Invalid " + locationName + " `" + propName + "` of type ") +
-          ("`" + propType + "` supplied to `" + componentName + "`, expected an object.")
+          ("`" + propType + "` supplied to `" + ComponentName + "`, expected an object.")
         );
       }
       for (var key in propValue) {
         if (propValue.hasOwnProperty(key)) {
-          var error = typeChecker(propValue, key, componentName, location);
+          var error = typeChecker(propValue, key, ComponentName, location);
           if (error instanceof Error) {
             return error;
           }
@@ -12597,10 +12597,10 @@
   }
   
   function createUnionTypeChecker(arrayOfTypeCheckers) {
-    function validate(props, propName, componentName, location) {
+    function validate(props, propName, ComponentName, location) {
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
-        if (checker(props, propName, componentName, location) == null) {
+        if (checker(props, propName, ComponentName, location) == null) {
           return null;
         }
       }
@@ -12608,19 +12608,19 @@
       var locationName = ReactPropTypeLocationNames[location];
       return new Error(
         ("Invalid " + locationName + " `" + propName + "` supplied to ") +
-        ("`" + componentName + "`.")
+        ("`" + ComponentName + "`.")
       );
     }
     return createChainableTypeChecker(validate);
   }
   
   function createNodeChecker() {
-    function validate(props, propName, componentName, location) {
+    function validate(props, propName, ComponentName, location) {
       if (!isNode(props[propName])) {
         var locationName = ReactPropTypeLocationNames[location];
         return new Error(
           ("Invalid " + locationName + " `" + propName + "` supplied to ") +
-          ("`" + componentName + "`, expected a ReactNode.")
+          ("`" + ComponentName + "`, expected a ReactNode.")
         );
       }
       return null;
@@ -12629,14 +12629,14 @@
   }
   
   function createShapeTypeChecker(shapeTypes) {
-    function validate(props, propName, componentName, location) {
+    function validate(props, propName, ComponentName, location) {
       var propValue = props[propName];
       var propType = getPropType(propValue);
       if (propType !== 'object') {
         var locationName = ReactPropTypeLocationNames[location];
         return new Error(
           ("Invalid " + locationName + " `" + propName + "` of type `" + propType + "` ") +
-          ("supplied to `" + componentName + "`, expected `object`.")
+          ("supplied to `" + ComponentName + "`, expected `object`.")
         );
       }
       for (var key in shapeTypes) {
@@ -12644,7 +12644,7 @@
         if (!checker) {
           continue;
         }
-        var error = checker(propValue, key, componentName, location);
+        var error = checker(propValue, key, ComponentName, location);
         if (error) {
           return error;
         }
@@ -12918,10 +12918,10 @@
   /**
    * Returns the DOM node rendered by this element.
    *
-   * @param {ReactComponent|DOMElement} componentOrElement
+   * @param {ReactComponent|DOMElement} ComponentOrElement
    * @return {DOMElement} The root node of this element.
    */
-  function findDOMNode(componentOrElement) {
+  function findDOMNode(ComponentOrElement) {
     if (true) {
       var owner = ReactCurrentOwner.current;
       if (owner !== null) {
@@ -12930,34 +12930,34 @@
           '%s is accessing getDOMNode or findDOMNode inside its render(). ' +
           'render() should be a pure function of props and state. It should ' +
           'never access something that requires stale data from the previous ' +
-          'render, such as refs. Move this logic to componentDidMount and ' +
-          'componentDidUpdate instead.',
-          owner.getName() || 'A component'
+          'render, such as refs. Move this logic to ComponentDidMount and ' +
+          'ComponentDidUpdate instead.',
+          owner.getName() || 'A Component'
         ) : null);
         owner._warnedAboutRefsInRender = true;
       }
     }
-    if (componentOrElement == null) {
+    if (ComponentOrElement == null) {
       return null;
     }
-    if (isNode(componentOrElement)) {
-      return componentOrElement;
+    if (isNode(ComponentOrElement)) {
+      return ComponentOrElement;
     }
-    if (ReactInstanceMap.has(componentOrElement)) {
-      return ReactMount.getNodeFromInstance(componentOrElement);
+    if (ReactInstanceMap.has(ComponentOrElement)) {
+      return ReactMount.getNodeFromInstance(ComponentOrElement);
     }
     (true ? invariant(
-      componentOrElement.render == null ||
-      typeof componentOrElement.render !== 'function',
+      ComponentOrElement.render == null ||
+      typeof ComponentOrElement.render !== 'function',
       'Component (with keys: %s) contains `render` method ' +
       'but is not mounted in the DOM',
-      Object.keys(componentOrElement)
-    ) : invariant(componentOrElement.render == null ||
-    typeof componentOrElement.render !== 'function'));
+      Object.keys(ComponentOrElement)
+    ) : invariant(ComponentOrElement.render == null ||
+    typeof ComponentOrElement.render !== 'function'));
     (true ? invariant(
       false,
       'Element appears to be neither ReactComponent nor DOMNode (keys: %s)',
-      Object.keys(componentOrElement)
+      Object.keys(ComponentOrElement)
     ) : invariant(false));
   }
   
@@ -13366,23 +13366,23 @@
   }
   
   /**
-   * Generate a key string that identifies a component within a set.
+   * Generate a key string that identifies a Component within a set.
    *
-   * @param {*} component A component that could contain a manual key.
+   * @param {*} Component A Component that could contain a manual key.
    * @param {number} index Index that is used if a manual key is not provided.
    * @return {string}
    */
-  function getComponentKey(component, index) {
-    if (component && component.key != null) {
+  function getComponentKey(Component, index) {
+    if (Component && Component.key != null) {
       // Explicit key
-      return wrapUserProvidedKey(component.key);
+      return wrapUserProvidedKey(Component.key);
     }
     // Implicit key determined by the index in the set
     return index.toString(36);
   }
   
   /**
-   * Escape a component key so that it is safe to use in a reactid.
+   * Escape a Component key so that it is safe to use in a reactid.
    *
    * @param {*} key Component key to be escaped.
    * @return {string} An escaped string.
@@ -13396,7 +13396,7 @@
   
   /**
    * Wrap a `key` value explicitly provided by the user to distinguish it from
-   * implicitly-generated keys generated by a component's index in its parent.
+   * implicitly-generated keys generated by a Component's index in its parent.
    *
    * @param {string} key Value of a user-provided `key` attribute
    * @return {string}
@@ -13519,7 +13519,7 @@
         (true ? invariant(
           children.nodeType !== 1,
           'traverseAllChildren(...): Encountered an invalid child; DOM ' +
-          'elements are not valid children of React components.'
+          'elements are not valid children of React Components.'
         ) : invariant(children.nodeType !== 1));
         var fragment = ReactFragment.extract(children);
         for (var key in fragment) {
@@ -16446,13 +16446,13 @@
     }
   
     _createClass(App, [{
-      key: 'componentDidMount',
-      value: function componentDidMount() {
+      key: 'ComponentDidMount',
+      value: function ComponentDidMount() {
         window.addEventListener('popstate', this.handlePopState);
       }
     }, {
-      key: 'componentWillUnmount',
-      value: function componentWillUnmount() {
+      key: 'ComponentWillUnmount',
+      value: function ComponentWillUnmount() {
         window.removeEventListener('popstate', this.handlePopState);
       }
     }, {
@@ -16463,7 +16463,7 @@
     }, {
       key: 'render',
       value: function render() {
-        var component = undefined;
+        var Component = undefined;
   
         switch (this.props.path) {
   
@@ -16471,27 +16471,27 @@
           case '/about':
           case '/privacy':
             var page = _storesAppStore2['default'].getPage(this.props.path);
-            component = _react2['default'].createElement(pages[page.component], page);
+            Component = _react2['default'].createElement(pages[page.Component], page);
             break;
   
           case '/contact':
-            component = _react2['default'].createElement(_ContactPage2['default'], null);
+            Component = _react2['default'].createElement(_ContactPage2['default'], null);
             break;
   
           case '/login':
-            component = _react2['default'].createElement(_LoginPage2['default'], null);
+            Component = _react2['default'].createElement(_LoginPage2['default'], null);
             break;
   
           case '/register':
-            component = _react2['default'].createElement(_RegisterPage2['default'], null);
+            Component = _react2['default'].createElement(_RegisterPage2['default'], null);
             break;
         }
   
-        return component ? _react2['default'].createElement(
+        return Component ? _react2['default'].createElement(
           'div',
           null,
           _react2['default'].createElement(_Header2['default'], null),
-          component,
+          Component,
           _react2['default'].createElement(_Feedback2['default'], null),
           _react2['default'].createElement(_Footer2['default'], null)
         ) : _react2['default'].createElement(_NotFoundPage2['default'], null);
@@ -17429,8 +17429,8 @@
       _inherits(WithViewport, _Component);
   
       _createClass(WithViewport, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
+        key: 'ComponentDidMount',
+        value: function ComponentDidMount() {
           if (!EE) {
             EE = new _eventemitter32['default']();
             window.addEventListener('resize', handleWindowResize);
@@ -17439,8 +17439,8 @@
           EE.on('resize', this.handleResize, this);
         }
       }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
+        key: 'ComponentWillUnmount',
+        value: function ComponentWillUnmount() {
           EE.removeListener(RESIZE_EVENT, this.handleResize, this);
           if (!EE.listeners(RESIZE_EVENT, true)) {
             window.removeEventListener('resize', handleWindowResize);
@@ -19342,7 +19342,7 @@
   
   /**
    * @param {string} topLevelType Record from `EventConstants`.
-   * @param {DOMEventTarget} topLevelTarget The listening component root node.
+   * @param {DOMEventTarget} topLevelTarget The listening Component root node.
    * @param {string} topLevelTargetID ID of `topLevelTarget`.
    * @param {object} nativeEvent Native browser event.
    * @return {?object} A SyntheticCompositionEvent.
@@ -19516,7 +19516,7 @@
    * `textInput` or fallback behavior.
    *
    * @param {string} topLevelType Record from `EventConstants`.
-   * @param {DOMEventTarget} topLevelTarget The listening component root node.
+   * @param {DOMEventTarget} topLevelTarget The listening Component root node.
    * @param {string} topLevelTargetID ID of `topLevelTarget`.
    * @param {object} nativeEvent Native browser event.
    * @return {?object} A SyntheticInputEvent.
@@ -19576,7 +19576,7 @@
   
     /**
      * @param {string} topLevelType Record from `EventConstants`.
-     * @param {DOMEventTarget} topLevelTarget The listening component root node.
+     * @param {DOMEventTarget} topLevelTarget The listening Component root node.
      * @param {string} topLevelTargetID ID of `topLevelTarget`.
      * @param {object} nativeEvent Native browser event.
      * @return {*} An accumulation of synthetic events.
@@ -19699,8 +19699,8 @@
     // Batching is necessary here in order to ensure that all event handlers run
     // before the next rerender (including event handlers attached to ancestor
     // elements instead of directly on the input). Without this, controlled
-    // components don't work properly in conjunction with event bubbling because
-    // the component is rerendered and the value reverted before all the event
+    // Components don't work properly in conjunction with event bubbling because
+    // the Component is rerendered and the value reverted before all the event
     // handlers can run. See https://github.com/facebook/react/issues/708.
     ReactUpdates.batchedUpdates(runEventInBatch, event);
   }
@@ -19933,7 +19933,7 @@
   
     /**
      * @param {string} topLevelType Record from `EventConstants`.
-     * @param {DOMEventTarget} topLevelTarget The listening component root node.
+     * @param {DOMEventTarget} topLevelTarget The listening Component root node.
      * @param {string} topLevelTargetID ID of `topLevelTarget`.
      * @param {object} nativeEvent Native browser event.
      * @return {*} An accumulation of synthetic events.
@@ -20076,7 +20076,7 @@
     updateTextContent: setTextContent,
   
     /**
-     * Updates a component's children by processing a series of updates. The
+     * Updates a Component's children by processing a series of updates. The
      * update configurations are each expected to have a `parentNode` property.
      *
      * @param {array<object>} updates List of update configurations.
@@ -20454,7 +20454,7 @@
      * the `mouseover` top-level event.
      *
      * @param {string} topLevelType Record from `EventConstants`.
-     * @param {DOMEventTarget} topLevelTarget The listening component root node.
+     * @param {DOMEventTarget} topLevelTarget The listening Component root node.
      * @param {string} topLevelTargetID ID of `topLevelTarget`.
      * @param {object} nativeEvent Native browser event.
      * @return {*} An accumulation of synthetic events.
@@ -20501,7 +20501,7 @@
       }
   
       if (from === to) {
-        // Nothing pertains to our managed components.
+        // Nothing pertains to our managed Components.
         return null;
       }
   
@@ -20979,7 +20979,7 @@
   
     /**
      * @param {string} topLevelType Record from `EventConstants`.
-     * @param {DOMEventTarget} topLevelTarget The listening component root node.
+     * @param {DOMEventTarget} topLevelTarget The listening Component root node.
      * @param {string} topLevelTargetID ID of `topLevelTarget`.
      * @param {object} nativeEvent Native browser event.
      * @return {*} An accumulation of synthetic events.
@@ -21271,7 +21271,7 @@
   
     /**
      * Unmounts all rendered children. This should be used to clean up children
-     * when this component is unmounted.
+     * when this Component is unmounted.
      *
      * @param {?object} renderedChildren Previously initialized set of children.
      * @internal
@@ -21480,8 +21480,8 @@
   var shouldUpdateReactComponent = __webpack_require__(88);
   var warning = __webpack_require__(6);
   
-  function getDeclarationErrorAddendum(component) {
-    var owner = component._currentElement._owner || null;
+  function getDeclarationErrorAddendum(Component) {
+    var owner = Component._currentElement._owner || null;
     if (owner) {
       var name = owner.getName();
       if (name) {
@@ -21495,23 +21495,23 @@
    * ------------------ The Life-Cycle of a Composite Component ------------------
    *
    * - constructor: Initialization of state. The instance is now retained.
-   *   - componentWillMount
+   *   - ComponentWillMount
    *   - render
    *   - [children's constructors]
-   *     - [children's componentWillMount and render]
-   *     - [children's componentDidMount]
-   *     - componentDidMount
+   *     - [children's ComponentWillMount and render]
+   *     - [children's ComponentDidMount]
+   *     - ComponentDidMount
    *
    *       Update Phases:
-   *       - componentWillReceiveProps (only called if parent updated)
+   *       - ComponentWillReceiveProps (only called if parent updated)
    *       - shouldComponentUpdate
-   *         - componentWillUpdate
+   *         - ComponentWillUpdate
    *           - render
    *           - [children's constructors or receive props phases]
-   *         - componentDidUpdate
+   *         - ComponentDidUpdate
    *
-   *     - componentWillUnmount
-   *     - [children's componentWillUnmount]
+   *     - ComponentWillUnmount
+   *     - [children's ComponentWillUnmount]
    *   - [children destroyed]
    * - (destroyed): The instance is now blank, released by React and ready for GC.
    *
@@ -21519,8 +21519,8 @@
    */
   
   /**
-   * An incrementing ID assigned to each component when it is mounted. This is
-   * used to enforce the order in which `ReactUpdates` updates dirty components.
+   * An incrementing ID assigned to each Component when it is mounted. This is
+   * used to enforce the order in which `ReactUpdates` updates dirty Components.
    *
    * @private
    */
@@ -21532,7 +21532,7 @@
   var ReactCompositeComponentMixin = {
   
     /**
-     * Base constructor for all composite component.
+     * Base constructor for all composite Component.
      *
      * @param {ReactElement} element
      * @final
@@ -21560,7 +21560,7 @@
     },
   
     /**
-     * Initializes the component, renders markup, and registers event listeners.
+     * Initializes the Component, renders markup, and registers event listeners.
      *
      * @param {string} rootID DOM ID of the root node.
      * @param {ReactReconcileTransaction|ReactServerRenderingTransaction} transaction
@@ -21588,10 +21588,10 @@
         // warning now to help debugging
         (true ? warning(
           inst.render != null,
-          '%s(...): No `render` method found on the returned component ' +
+          '%s(...): No `render` method found on the returned Component ' +
           'instance: you may have forgotten to define `render` in your ' +
-          'component or you may have accidentally tried to render an element ' +
-          'whose type is a function that isn\'t a React component.',
+          'Component or you may have accidentally tried to render an element ' +
+          'whose type is a function that isn\'t a React Component.',
           Component.displayName || Component.name || 'Component'
         ) : null);
       }
@@ -21621,7 +21621,7 @@
           'getInitialState was defined on %s, a plain JavaScript class. ' +
           'This is only supported for classes created using React.createClass. ' +
           'Did you mean to define a state property instead?',
-          this.getName() || 'a component'
+          this.getName() || 'a Component'
         ) : null);
         (true ? warning(
           !inst.getDefaultProps ||
@@ -21629,27 +21629,27 @@
           'getDefaultProps was defined on %s, a plain JavaScript class. ' +
           'This is only supported for classes created using React.createClass. ' +
           'Use a static property to define defaultProps instead.',
-          this.getName() || 'a component'
+          this.getName() || 'a Component'
         ) : null);
         (true ? warning(
           !inst.propTypes,
           'propTypes was defined as an instance property on %s. Use a static ' +
           'property to define propTypes instead.',
-          this.getName() || 'a component'
+          this.getName() || 'a Component'
         ) : null);
         (true ? warning(
           !inst.contextTypes,
           'contextTypes was defined as an instance property on %s. Use a ' +
           'static property to define contextTypes instead.',
-          this.getName() || 'a component'
+          this.getName() || 'a Component'
         ) : null);
         (true ? warning(
-          typeof inst.componentShouldUpdate !== 'function',
+          typeof inst.ComponentShouldUpdate !== 'function',
           '%s has a method called ' +
-          'componentShouldUpdate(). Did you mean shouldComponentUpdate()? ' +
+          'ComponentShouldUpdate(). Did you mean shouldComponentUpdate()? ' +
           'The name is phrased as a question because the function is ' +
           'expected to return a value.',
-          (this.getName() || 'A component')
+          (this.getName() || 'A Component')
         ) : null);
       }
   
@@ -21673,9 +21673,9 @@
       var previouslyMounting = ReactLifeCycle.currentlyMountingInstance;
       ReactLifeCycle.currentlyMountingInstance = this;
       try {
-        if (inst.componentWillMount) {
-          inst.componentWillMount();
-          // When mounting, calls to `setState` by `componentWillMount` will set
+        if (inst.ComponentWillMount) {
+          inst.ComponentWillMount();
+          // When mounting, calls to `setState` by `ComponentWillMount` will set
           // `this._pendingStateQueue` without triggering a re-render.
           if (this._pendingStateQueue) {
             inst.state = this._processPendingState(inst.props, inst.context);
@@ -21699,8 +21699,8 @@
         transaction,
         this._mergeChildContext(context, childContext)
       );
-      if (inst.componentDidMount) {
-        transaction.getReactMountReady().enqueue(inst.componentDidMount, inst);
+      if (inst.ComponentDidMount) {
+        transaction.getReactMountReady().enqueue(inst.ComponentDidMount, inst);
       }
   
       return markup;
@@ -21715,11 +21715,11 @@
     unmountComponent: function() {
       var inst = this._instance;
   
-      if (inst.componentWillUnmount) {
+      if (inst.ComponentWillUnmount) {
         var previouslyUnmounting = ReactLifeCycle.currentlyUnmountingInstance;
         ReactLifeCycle.currentlyUnmountingInstance = this;
         try {
-          inst.componentWillUnmount();
+          inst.ComponentWillUnmount();
         } finally {
           ReactLifeCycle.currentlyUnmountingInstance = previouslyUnmounting;
         }
@@ -21745,7 +21745,7 @@
       // leaks a reference to the public instance.
       ReactInstanceMap.remove(inst);
   
-      // Some existing components rely on inst.props even after they've been
+      // Some existing Components rely on inst.props even after they've been
       // destroyed (in event handlers).
       // TODO: inst.props = null;
       // TODO: inst.state = null;
@@ -21781,7 +21781,7 @@
      */
     _maskContext: function(context) {
       var maskedContext = null;
-      // This really should be getting the component class for the element,
+      // This really should be getting the Component class for the element,
       // but we know that we're not going to need it for built-ins.
       if (typeof this._currentElement.type === 'string') {
         return emptyObject;
@@ -21900,7 +21900,7 @@
     _checkPropTypes: function(propTypes, props, location) {
       // TODO: Stop validating prop types here and only use the element
       // validation.
-      var componentName = this.getName();
+      var ComponentName = this.getName();
       for (var propName in propTypes) {
         if (propTypes.hasOwnProperty(propName)) {
           var error;
@@ -21911,11 +21911,11 @@
               typeof propTypes[propName] === 'function',
               '%s: %s type `%s` is invalid; it must be a function, usually ' +
               'from React.PropTypes.',
-              componentName || 'React class',
+              ComponentName || 'React class',
               ReactPropTypeLocationNames[location],
               propName
             ) : invariant(typeof propTypes[propName] === 'function'));
-            error = propTypes[propName](props, propName, componentName, location);
+            error = propTypes[propName](props, propName, ComponentName, location);
           } catch (ex) {
             error = ex;
           }
@@ -21963,7 +21963,7 @@
   
     /**
      * If any of `_pendingElement`, `_pendingStateQueue`, or `_pendingForceUpdate`
-     * is set, update the component.
+     * is set, update the Component.
      *
      * @param {ReactReconcileTransaction} transaction
      * @internal
@@ -22020,7 +22020,7 @@
     },
   
     /**
-     * Perform an update to a mounted component. The componentWillReceiveProps and
+     * Perform an update to a mounted Component. The ComponentWillReceiveProps and
      * shouldComponentUpdate methods are called, then (assuming the update isn't
      * skipped) the remaining update lifecycle methods are called and the DOM
      * representation is updated.
@@ -22064,8 +22064,8 @@
         // _pendingStateQueue which will ensure that any state updates gets
         // immediately reconciled instead of waiting for the next batch.
   
-        if (inst.componentWillReceiveProps) {
-          inst.componentWillReceiveProps(nextProps, nextContext);
+        if (inst.ComponentWillReceiveProps) {
+          inst.ComponentWillReceiveProps(nextProps, nextContext);
         }
       }
   
@@ -22097,7 +22097,7 @@
           nextUnmaskedContext
         );
       } else {
-        // If it's determined that a component should not update, we still want
+        // If it's determined that a Component should not update, we still want
         // to set props and state but we shortcut the rest of the update.
         this._currentElement = nextParentElement;
         this._context = nextUnmaskedContext;
@@ -22162,8 +22162,8 @@
       var prevState = inst.state;
       var prevContext = inst.context;
   
-      if (inst.componentWillUpdate) {
-        inst.componentWillUpdate(nextProps, nextState, nextContext);
+      if (inst.ComponentWillUpdate) {
+        inst.ComponentWillUpdate(nextProps, nextState, nextContext);
       }
   
       this._currentElement = nextElement;
@@ -22174,16 +22174,16 @@
   
       this._updateRenderedComponent(transaction, unmaskedContext);
   
-      if (inst.componentDidUpdate) {
+      if (inst.ComponentDidUpdate) {
         transaction.getReactMountReady().enqueue(
-          inst.componentDidUpdate.bind(inst, prevProps, prevState, prevContext),
+          inst.ComponentDidUpdate.bind(inst, prevProps, prevState, prevContext),
           inst
         );
       }
     },
   
     /**
-     * Call the component's `render` method and update the DOM accordingly.
+     * Call the Component's `render` method and update the DOM accordingly.
      *
      * @param {ReactReconcileTransaction} transaction
      * @internal
@@ -22281,17 +22281,17 @@
     },
   
     /**
-     * Lazily allocates the refs object and stores `component` as `ref`.
+     * Lazily allocates the refs object and stores `Component` as `ref`.
      *
      * @param {string} ref Reference name.
-     * @param {component} component Component to store as `ref`.
+     * @param {Component} Component Component to store as `ref`.
      * @final
      * @private
      */
-    attachRef: function(ref, component) {
+    attachRef: function(ref, Component) {
       var inst = this.getPublicInstance();
       var refs = inst.refs === emptyObject ? (inst.refs = {}) : inst.refs;
-      refs[ref] = component.getPublicInstance();
+      refs[ref] = Component.getPublicInstance();
     },
   
     /**
@@ -22307,7 +22307,7 @@
     },
   
     /**
-     * Get a text description of the component that can be used to identify it
+     * Get a text description of the Component that can be used to identify it
      * in error messages.
      * @return {string} The name or null.
      * @internal
@@ -22323,11 +22323,11 @@
     },
   
     /**
-     * Get the publicly accessible representation of this component - i.e. what
+     * Get the publicly accessible representation of this Component - i.e. what
      * is exposed by refs and returned by React.render. Can be null for stateless
-     * components.
+     * Components.
      *
-     * @return {ReactComponent} the public component instance.
+     * @return {ReactComponent} the public Component instance.
      * @internal
      */
     getPublicInstance: function() {
@@ -22579,7 +22579,7 @@
   });
   
   /**
-   * Implements a <button> native component that does not receive mouse events
+   * Implements a <button> native Component that does not receive mouse events
    * when `disabled` is set.
    */
   var ReactDOMButton = ReactClass.createClass({
@@ -22636,7 +22636,7 @@
    * Since onSubmit doesn't bubble OR capture on the top level in IE8, we need
    * to capture it on the <form> element itself. There are lots of hacks we could
    * do to accomplish this, but the most reliable is to make <form> a
-   * composite component and use `componentDidMount` to attach the event handlers.
+   * composite Component and use `ComponentDidMount` to attach the event handlers.
    */
   var ReactDOMForm = ReactClass.createClass({
     displayName: 'ReactDOMForm',
@@ -22651,7 +22651,7 @@
       return form(this.props);
     },
   
-    componentDidMount: function() {
+    ComponentDidMount: function() {
       this.trapBubbledEvent(EventConstants.topLevelTypes.topReset, 'reset');
       this.trapBubbledEvent(EventConstants.topLevelTypes.topSubmit, 'submit');
     }
@@ -22689,7 +22689,7 @@
    * Since onLoad doesn't bubble OR capture on the top level in IE8, we need to
    * capture it on the <iframe> element itself. There are lots of hacks we could
    * do to accomplish this, but the most reliable is to make <iframe> a composite
-   * component and use `componentDidMount` to attach the event handlers.
+   * Component and use `ComponentDidMount` to attach the event handlers.
    */
   var ReactDOMIframe = ReactClass.createClass({
     displayName: 'ReactDOMIframe',
@@ -22701,7 +22701,7 @@
       return iframe(this.props);
     },
   
-    componentDidMount: function() {
+    ComponentDidMount: function() {
       this.trapBubbledEvent(EventConstants.topLevelTypes.topLoad, 'load');
     }
   });
@@ -22738,7 +22738,7 @@
    * Since onLoad doesn't bubble OR capture on the top level in IE8, we need to
    * capture it on the <img> element itself. There are lots of hacks we could do
    * to accomplish this, but the most reliable is to make <img> a composite
-   * component and use `componentDidMount` to attach the event handlers.
+   * Component and use `ComponentDidMount` to attach the event handlers.
    */
   var ReactDOMImg = ReactClass.createClass({
     displayName: 'ReactDOMImg',
@@ -22750,7 +22750,7 @@
       return img(this.props);
     },
   
-    componentDidMount: function() {
+    ComponentDidMount: function() {
       this.trapBubbledEvent(EventConstants.topLevelTypes.topLoad, 'load');
       this.trapBubbledEvent(EventConstants.topLevelTypes.topError, 'error');
     }
@@ -22800,7 +22800,7 @@
   }
   
   /**
-   * Implements an <input> native component that allows setting these optional
+   * Implements an <input> native Component that allows setting these optional
    * props: `checked`, `value`, `defaultChecked`, and `defaultValue`.
    *
    * If `checked` or `value` are not supplied (or null/undefined), user actions
@@ -22847,18 +22847,18 @@
       return input(props, this.props.children);
     },
   
-    componentDidMount: function() {
+    ComponentDidMount: function() {
       var id = ReactMount.getID(this.getDOMNode());
       instancesByReactID[id] = this;
     },
   
-    componentWillUnmount: function() {
+    ComponentWillUnmount: function() {
       var rootNode = this.getDOMNode();
       var id = ReactMount.getID(rootNode);
       delete instancesByReactID[id];
     },
   
-    componentDidUpdate: function(prevProps, prevState, prevContext) {
+    ComponentDidUpdate: function(prevProps, prevState, prevContext) {
       var rootNode = this.getDOMNode();
       if (this.props.checked != null) {
         DOMPropertyOperations.setValueForProperty(
@@ -22883,7 +22883,7 @@
         returnValue = onChange.call(this, event);
       }
       // Here we use asap to wait until all updates have propagated, which
-      // is important when using controlled components within layers:
+      // is important when using controlled Components within layers:
       // https://github.com/facebook/react/issues/1698
       ReactUpdates.asap(forceUpdateIfMounted, this);
   
@@ -22964,7 +22964,7 @@
   var option = ReactElement.createFactory('option');
   
   /**
-   * Implements an <option> native component that warns when `selected` is set.
+   * Implements an <option> native Component that warns when `selected` is set.
    */
   var ReactDOMOption = ReactClass.createClass({
     displayName: 'ReactDOMOption',
@@ -22972,7 +22972,7 @@
   
     mixins: [ReactBrowserComponentMixin],
   
-    componentWillMount: function() {
+    ComponentWillMount: function() {
       // TODO (yungsters): Remove support for `selected` in <option>.
       if (true) {
         (true ? warning(
@@ -23035,7 +23035,7 @@
    * Validation function for `value` and `defaultValue`.
    * @private
    */
-  function selectValueType(props, propName, componentName) {
+  function selectValueType(props, propName, ComponentName) {
     if (props[propName] == null) {
       return null;
     }
@@ -23057,15 +23057,15 @@
   }
   
   /**
-   * @param {ReactComponent} component Instance of ReactDOMSelect
+   * @param {ReactComponent} Component Instance of ReactDOMSelect
    * @param {*} propValue A stringable (with `multiple`, a list of stringables).
    * @private
    */
-  function updateOptions(component, propValue) {
+  function updateOptions(Component, propValue) {
     var selectedValue, i, l;
-    var options = component.getDOMNode().options;
+    var options = Component.getDOMNode().options;
   
-    if (component.props.multiple) {
+    if (Component.props.multiple) {
       selectedValue = {};
       for (i = 0, l = propValue.length; i < l; i++) {
         selectedValue['' + propValue[i]] = true;
@@ -23093,7 +23093,7 @@
   }
   
   /**
-   * Implements a <select> native component that allows optionally setting the
+   * Implements a <select> native Component that allows optionally setting the
    * props `value` and `defaultValue`. If `multiple` is false, the prop must be a
    * stringable. If `multiple` is true, the prop must be an array of stringables.
    *
@@ -23128,11 +23128,11 @@
       return select(props, this.props.children);
     },
   
-    componentWillMount: function() {
+    ComponentWillMount: function() {
       this._pendingUpdate = false;
     },
   
-    componentDidMount: function() {
+    ComponentDidMount: function() {
       var value = LinkedValueUtils.getValue(this);
       if (value != null) {
         updateOptions(this, value);
@@ -23141,7 +23141,7 @@
       }
     },
   
-    componentDidUpdate: function(prevProps) {
+    ComponentDidUpdate: function(prevProps) {
       var value = LinkedValueUtils.getValue(this);
       if (value != null) {
         this._pendingUpdate = false;
@@ -23431,7 +23431,7 @@
   }
   
   /**
-   * Implements a <textarea> native component that allows setting `value`, and
+   * Implements a <textarea> native Component that allows setting `value`, and
    * `defaultValue`. This differs from the traditional DOM API because value is
    * usually set as PCDATA children.
    *
@@ -23508,7 +23508,7 @@
       return textarea(props, this.state.initialValue);
     },
   
-    componentDidUpdate: function(prevProps, prevState, prevContext) {
+    ComponentDidUpdate: function(prevProps, prevState, prevContext) {
       var value = LinkedValueUtils.getValue(this);
       if (value != null) {
         var rootNode = this.getDOMNode();
@@ -23591,7 +23591,7 @@
   
     /**
      * Call the provided function in a context within which calls to `setState`
-     * and friends are batched such that components aren't updated unnecessarily.
+     * and friends are batched such that Components aren't updated unnecessarily.
      */
     batchedUpdates: function(callback, a, b, c, d) {
       var alreadyBatchingUpdates = ReactDefaultBatchingStrategy.isBatchingUpdates;
@@ -23831,7 +23831,7 @@
       var summary = ReactDefaultPerfAnalysis.getExclusiveSummary(measurements);
       console.table(summary.map(function(item) {
         return {
-          'Component class name': item.componentName,
+          'Component class name': item.ComponentName,
           'Total inclusive time (ms)': roundFloat(item.inclusive),
           'Exclusive mount time (ms)': roundFloat(item.exclusive),
           'Exclusive render time (ms)': roundFloat(item.render),
@@ -23849,7 +23849,7 @@
       var summary = ReactDefaultPerfAnalysis.getInclusiveSummary(measurements);
       console.table(summary.map(function(item) {
         return {
-          'Owner > component': item.componentName,
+          'Owner > Component': item.ComponentName,
           'Inclusive time (ms)': roundFloat(item.time),
           'Instances': item.count
         };
@@ -23867,7 +23867,7 @@
       );
       return summary.map(function(item) {
         return {
-          'Owner > component': item.componentName,
+          'Owner > Component': item.ComponentName,
           'Wasted time (ms)': item.time,
           'Instances': item.count
         };
@@ -23923,7 +23923,7 @@
             fnName === 'flushBatchedUpdates') {
           // A "measurement" is a set of metrics recorded for each flush. We want
           // to group the metrics for a given flush together so we can look at the
-          // components that rendered and the DOM operations that actually
+          // Components that rendered and the DOM operations that actually
           // happened to determine the amount of "wasted work" performed.
           ReactDefaultPerf._allMeasurements.push({
             exclusive: {},
@@ -24076,7 +24076,7 @@
   function getTotalTime(measurements) {
     // TODO: return number of DOM ops? could be misleading.
     // TODO: measure dropped frames after reconcile?
-    // TODO: log total time of each reconcile and the top-level component
+    // TODO: log total time of each reconcile and the top-level Component
     // class that triggered it.
     var totalTime = 0;
     for (var i = 0; i < measurements.length; i++) {
@@ -24121,7 +24121,7 @@
         displayName = measurement.displayNames[id].current;
   
         candidates[displayName] = candidates[displayName] || {
-          componentName: displayName,
+          ComponentName: displayName,
           inclusive: 0,
           exclusive: 0,
           render: 0,
@@ -24181,13 +24181,13 @@
   
         var displayName = measurement.displayNames[id];
   
-        // Inclusive time is not useful for many components without knowing where
+        // Inclusive time is not useful for many Components without knowing where
         // they are instantiated. So we aggregate inclusive time with both the
         // owner and current displayName as the key.
         inclusiveKey = displayName.owner + ' > ' + displayName.current;
   
         candidates[inclusiveKey] = candidates[inclusiveKey] || {
-          componentName: inclusiveKey,
+          ComponentName: inclusiveKey,
           time: 0,
           count: 0
         };
@@ -24217,7 +24217,7 @@
   }
   
   function getUnchangedComponents(measurement) {
-    // For a given reconcile, look at which components did not actually
+    // For a given reconcile, look at which Components did not actually
     // render anything to the DOM and return a mapping of their ID to
     // the amount of time it took to render the entire subtree.
     var cleanComponents = {};
@@ -24226,7 +24226,7 @@
   
     for (var id in allIDs) {
       var isDirty = false;
-      // For each component that rendered, see if a component that triggered
+      // For each Component that rendered, see if a Component that triggered
       // a DOM op is in its subtree.
       for (var i = 0; i < dirtyLeafIDs.length; i++) {
         if (dirtyLeafIDs[i].indexOf(id) === 0) {
@@ -24318,7 +24318,7 @@
      * opportunity to create `ReactEvent`s to be dispatched.
      *
      * @param {string} topLevelType Record from `EventConstants`.
-     * @param {object} topLevelTarget The listening component root node.
+     * @param {object} topLevelTarget The listening Component root node.
      * @param {string} topLevelTargetID ID of `topLevelTarget`.
      * @param {object} nativeEvent Native environment event.
      */
@@ -24371,7 +24371,7 @@
   var getUnboundedScrollPosition = __webpack_require__(276);
   
   /**
-   * Finds the parent React component of `node`.
+   * Finds the parent React Component of `node`.
    *
    * @param {*} node
    * @return {?DOMEventTarget} Parent container, or `null` if the specified node
@@ -24411,7 +24411,7 @@
       getEventTarget(bookKeeping.nativeEvent)
     ) || window;
   
-    // Loop through the hierarchy, in case there's any nested components.
+    // Loop through the hierarchy, in case there's any nested Components.
     // It's important that we build the array of ancestors before calling any
     // event handlers, because event handlers can modify the DOM, leading to
     // inconsistencies with ReactMount's node cache. See #1105.
@@ -24599,7 +24599,7 @@
   var ReactChildReconciler = __webpack_require__(226);
   
   /**
-   * Updating children of a component may trigger recursive updates. The depth is
+   * Updating children of a Component may trigger recursive updates. The depth is
    * used to batch recursive updates to render markup more efficiently.
    *
    * @type {number}
@@ -24628,7 +24628,7 @@
   /**
    * Enqueues markup to be rendered and inserted at a supplied index.
    *
-   * @param {string} parentID ID of the parent component.
+   * @param {string} parentID ID of the parent Component.
    * @param {string} markup Markup that renders into an element.
    * @param {number} toIndex Destination index.
    * @private
@@ -24649,7 +24649,7 @@
   /**
    * Enqueues moving an existing element to another index.
    *
-   * @param {string} parentID ID of the parent component.
+   * @param {string} parentID ID of the parent Component.
    * @param {number} fromIndex Source index of the existing element.
    * @param {number} toIndex Destination index of the element.
    * @private
@@ -24670,7 +24670,7 @@
   /**
    * Enqueues removing an element at an index.
    *
-   * @param {string} parentID ID of the parent component.
+   * @param {string} parentID ID of the parent Component.
    * @param {number} fromIndex Index of the element to remove.
    * @private
    */
@@ -24690,7 +24690,7 @@
   /**
    * Enqueues setting the text content.
    *
-   * @param {string} parentID ID of the parent component.
+   * @param {string} parentID ID of the parent Component.
    * @param {string} textContent Text content to set.
    * @private
    */
@@ -24741,9 +24741,9 @@
   var ReactMultiChild = {
   
     /**
-     * Provides common functionality for components that must reconcile multiple
+     * Provides common functionality for Components that must reconcile multiple
      * children. This is used by `ReactDOMComponent` to mount, update, and
-     * unmount child components.
+     * unmount child Components.
      *
      * @lends {ReactMultiChild.prototype}
      */
@@ -24900,7 +24900,7 @@
   
       /**
        * Unmounts all rendered children. This should be used to clean up children
-       * when this component is unmounted.
+       * when this Component is unmounted.
        *
        * @internal
        */
@@ -24911,7 +24911,7 @@
       },
   
       /**
-       * Moves a child component to the supplied index.
+       * Moves a child Component to the supplied index.
        *
        * @param {ReactComponent} child Component to move.
        * @param {number} toIndex Destination index of the element.
@@ -24928,7 +24928,7 @@
       },
   
       /**
-       * Creates a child component.
+       * Creates a child Component.
        *
        * @param {ReactComponent} child Component to create.
        * @param {string} mountImage Markup to insert.
@@ -24939,7 +24939,7 @@
       },
   
       /**
-       * Removes a child component.
+       * Removes a child Component.
        *
        * @param {ReactComponent} child Child to remove.
        * @protected
@@ -25028,10 +25028,10 @@
   var invariant = __webpack_require__(2);
   
   /**
-   * ReactOwners are capable of storing references to owned components.
+   * ReactOwners are capable of storing references to owned Components.
    *
-   * All components are capable of //being// referenced by owner components, but
-   * only ReactOwner components are capable of //referencing// owned components.
+   * All Components are capable of //being// referenced by owner Components, but
+   * only ReactOwner Components are capable of //referencing// owned Components.
    * The named reference is known as a "ref".
    *
    * Refs are available when mounted and updated during reconciliation.
@@ -25047,7 +25047,7 @@
    *     handleClick: function() {
    *       this.refs.custom.handleClick();
    *     },
-   *     componentDidMount: function() {
+   *     ComponentDidMount: function() {
    *       this.refs.custom.initialize();
    *     }
    *   });
@@ -25072,47 +25072,47 @@
     },
   
     /**
-     * Adds a component by ref to an owner component.
+     * Adds a Component by ref to an owner Component.
      *
-     * @param {ReactComponent} component Component to reference.
-     * @param {string} ref Name by which to refer to the component.
+     * @param {ReactComponent} Component Component to reference.
+     * @param {string} ref Name by which to refer to the Component.
      * @param {ReactOwner} owner Component on which to record the ref.
      * @final
      * @internal
      */
-    addComponentAsRefTo: function(component, ref, owner) {
+    addComponentAsRefTo: function(Component, ref, owner) {
       (true ? invariant(
         ReactOwner.isValidOwner(owner),
         'addComponentAsRefTo(...): Only a ReactOwner can have refs. This ' +
-        'usually means that you\'re trying to add a ref to a component that ' +
+        'usually means that you\'re trying to add a ref to a Component that ' +
         'doesn\'t have an owner (that is, was not created inside of another ' +
-        'component\'s `render` method). Try rendering this component inside of ' +
-        'a new top-level component which will hold the ref.'
+        'Component\'s `render` method). Try rendering this Component inside of ' +
+        'a new top-level Component which will hold the ref.'
       ) : invariant(ReactOwner.isValidOwner(owner)));
-      owner.attachRef(ref, component);
+      owner.attachRef(ref, Component);
     },
   
     /**
-     * Removes a component by ref from an owner component.
+     * Removes a Component by ref from an owner Component.
      *
-     * @param {ReactComponent} component Component to dereference.
+     * @param {ReactComponent} Component Component to dereference.
      * @param {string} ref Name of the ref to remove.
      * @param {ReactOwner} owner Component on which the ref is recorded.
      * @final
      * @internal
      */
-    removeComponentAsRefFrom: function(component, ref, owner) {
+    removeComponentAsRefFrom: function(Component, ref, owner) {
       (true ? invariant(
         ReactOwner.isValidOwner(owner),
         'removeComponentAsRefFrom(...): Only a ReactOwner can have refs. This ' +
-        'usually means that you\'re trying to remove a ref to a component that ' +
+        'usually means that you\'re trying to remove a ref to a Component that ' +
         'doesn\'t have an owner (that is, was not created inside of another ' +
-        'component\'s `render` method). Try rendering this component inside of ' +
-        'a new top-level component which will hold the ref.'
+        'Component\'s `render` method). Try rendering this Component inside of ' +
+        'a new top-level Component which will hold the ref.'
       ) : invariant(ReactOwner.isValidOwner(owner)));
-      // Check that `component` is still the current ref because we do not want to
-      // detach the ref if another component stole it.
-      if (owner.getPublicInstance().refs[ref] === component.getPublicInstance()) {
+      // Check that `Component` is still the current ref because we do not want to
+      // detach the ref if another Component stole it.
+      if (owner.getPublicInstance().refs[ref] === Component.getPublicInstance()) {
         owner.detachRef(ref);
       }
     }
@@ -25191,8 +25191,8 @@
   };
   
   /**
-   * Provides a queue for collecting `componentDidMount` and
-   * `componentDidUpdate` callbacks during the the transaction.
+   * Provides a queue for collecting `ComponentDidMount` and
+   * `ComponentDidUpdate` callbacks during the the transaction.
    */
   var ON_DOM_READY_QUEUEING = {
     /**
@@ -25323,21 +25323,21 @@
   
   var ReactRef = {};
   
-  function attachRef(ref, component, owner) {
+  function attachRef(ref, Component, owner) {
     if (typeof ref === 'function') {
-      ref(component.getPublicInstance());
+      ref(Component.getPublicInstance());
     } else {
       // Legacy ref
-      ReactOwner.addComponentAsRefTo(component, ref, owner);
+      ReactOwner.addComponentAsRefTo(Component, ref, owner);
     }
   }
   
-  function detachRef(ref, component, owner) {
+  function detachRef(ref, Component, owner) {
     if (typeof ref === 'function') {
       ref(null);
     } else {
       // Legacy ref
-      ReactOwner.removeComponentAsRefFrom(component, ref, owner);
+      ReactOwner.removeComponentAsRefFrom(Component, ref, owner);
     }
   }
   
@@ -25420,9 +25420,9 @@
       transaction = ReactServerRenderingTransaction.getPooled(false);
   
       return transaction.perform(function() {
-        var componentInstance = instantiateReactComponent(element, null);
+        var ComponentInstance = instantiateReactComponent(element, null);
         var markup =
-          componentInstance.mountComponent(id, transaction, emptyObject);
+          ComponentInstance.mountComponent(id, transaction, emptyObject);
         return ReactMarkupChecksum.addChecksumToMarkup(markup);
       }, null);
     } finally {
@@ -25447,8 +25447,8 @@
       transaction = ReactServerRenderingTransaction.getPooled(true);
   
       return transaction.perform(function() {
-        var componentInstance = instantiateReactComponent(element, null);
-        return componentInstance.mountComponent(id, transaction, emptyObject);
+        var ComponentInstance = instantiateReactComponent(element, null);
+        return ComponentInstance.mountComponent(id, transaction, emptyObject);
       }, null);
     } finally {
       ReactServerRenderingTransaction.release(transaction);
@@ -25820,7 +25820,7 @@
   
     /**
      * @param {string} topLevelType Record from `EventConstants`.
-     * @param {DOMEventTarget} topLevelTarget The listening component root node.
+     * @param {DOMEventTarget} topLevelTarget The listening Component root node.
      * @param {string} topLevelTargetID ID of `topLevelTarget`.
      * @param {object} nativeEvent Native browser event.
      * @return {*} An accumulation of synthetic events.
@@ -26235,7 +26235,7 @@
   
     /**
      * @param {string} topLevelType Record from `EventConstants`.
-     * @param {DOMEventTarget} topLevelTarget The listening component root node.
+     * @param {DOMEventTarget} topLevelTarget The listening Component root node.
      * @param {string} topLevelTargetID ID of `topLevelTarget`.
      * @param {object} nativeEvent Native browser event.
      * @return {*} An accumulation of synthetic events.
@@ -27017,7 +27017,7 @@
   var invariant = __webpack_require__(2);
   
   /**
-   * Create a component that will throw an exception when unmounted.
+   * Create a Component that will throw an exception when unmounted.
    *
    * Components like <html> <head> and <body> can't be removed or added
    * easily in a cross-browser way, however it's valuable to be able to
@@ -27025,7 +27025,7 @@
    * management. So we just document it and throw in dangerous cases.
    *
    * @param {string} tag The tag to wrap
-   * @return {function} convenience constructor of new component
+   * @return {function} convenience constructor of new Component
    */
   function createFullPageComponent(tag) {
     var elementFactory = ReactElement.createFactory(tag);
@@ -27034,13 +27034,13 @@
       tagName: tag.toUpperCase(),
       displayName: 'ReactFullPageComponent' + tag,
   
-      componentWillUnmount: function() {
+      ComponentWillUnmount: function() {
         (true ? invariant(
           false,
           '%s tried to unmount. Because of cross-browser quirks it is ' +
-          'impossible to unmount some top-level components (eg <html>, <head>, ' +
+          'impossible to unmount some top-level Components (eg <html>, <head>, ' +
           'and <body>) reliably and efficiently. To fix this, have a single ' +
-          'top-level component that never unmounts render these elements.',
+          'top-level Component that never unmounts render these elements.',
           this.constructor.displayName
         ) : invariant(false));
       },
@@ -27232,11 +27232,11 @@
   
   /**
    * @param {function} traverseContext Context passed through traversal.
-   * @param {?ReactComponent} child React child component.
+   * @param {?ReactComponent} child React child Component.
    * @param {!string} name String name of key path to child.
    */
   function flattenSingleChildIntoContext(traverseContext, child, name) {
-    // We found a component instance.
+    // We found a Component instance.
     var result = traverseContext;
     var keyUnique = !result.hasOwnProperty(name);
     if (true) {
@@ -27479,7 +27479,7 @@
   
   /**
    * @param {DOMElement|DOMDocument} container DOM element that may contain
-   *                                           a React component
+   *                                           a React Component
    * @return {?*} DOM element that may have the reactRoot ID, or null.
    */
   function getReactRootElementInContainer(container) {

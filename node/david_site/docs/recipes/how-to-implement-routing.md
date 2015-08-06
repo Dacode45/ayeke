@@ -13,16 +13,16 @@
 ### Step 1: Basic Routing
 
 In its simplest form the routing looks like a collection or URLs where each URL
-is mapped to a React component:
+is mapped to a React Component:
 
 ```js
 // app.js
 import React from 'react';
-import Layout from './components/Layout';
-import HomePage from './components/HomePage';
-import AboutPage from './components/AboutPage';
-import NotFoundPage from './components/NotFoundPage';
-import ErrorPage from './components/ErrorPage';
+import Layout from './Components/Layout';
+import HomePage from './Components/HomePage';
+import AboutPage from './Components/AboutPage';
+import NotFoundPage from './Components/NotFoundPage';
+import ErrorPage from './Components/ErrorPage';
 
 const routes = {
   '/':      <Layout><HomePage /></Layout>,
@@ -34,8 +34,8 @@ const container = document.getElementById('app');
 function render() {
   try {
     const path = window.location.path.substr(1) || '/';
-    const component = routes[path] || <NotFoundPage />;
-    React.render(component, container);
+    const Component = routes[path] || <NotFoundPage />;
+    React.render(Component, container);
   } catch (err) {
     React.render(<ErrorPage {...err} />, container);
   }
@@ -47,16 +47,16 @@ render();
 
 ### Step 2: Asynchronous Routes
 
-Just wrap React components inside your routes into asynchronous functions:
+Just wrap React Components inside your routes into asynchronous functions:
 
 ```js
 import React from 'react';
 import http from './core/HttpClient';
-import Layout from './components/Layout';
-import HomePage from './components/HomePage';
-import AboutPage from './components/AboutPage';
-import NotFoundPage from './components/NotFoundPage';
-import ErrorPage from './components/ErrorPage';
+import Layout from './Components/Layout';
+import HomePage from './Components/HomePage';
+import AboutPage from './Components/AboutPage';
+import NotFoundPage from './Components/NotFoundPage';
+import ErrorPage from './Components/ErrorPage';
 
 const routes = {
   '/': async () => {
@@ -75,8 +75,8 @@ async function render() {
   try {
     const path = window.location.hash.substr(1) || '/';
     const route = routes[path];
-    const component = route ? await route() : <NotFoundPage />;
-    React.render(component, container);
+    const Component = route ? await route() : <NotFoundPage />;
+    React.render(Component, container);
   } catch (err) {
     React.render(<ErrorPage {...err} />, container);
   }
@@ -92,17 +92,17 @@ render();
 order of routes will be preserved. **(2)** Wrap this collection into a Router
 class, where you can put `.match(url)` async method. **(3)** Use [path-to-regexp](https://github.com/pillarjs/path-to-regexp)
 to convert Express-like path strings into regular expressions which are used
-for matching URL paths to React components.
+for matching URL paths to React Components.
 
 ```js
 import React from 'react';
 import Router from './core/Router';
 import http from './core/HttpClient';
-import Layout from './components/Layout';
-import ProductListing from './components/ProductListing';
-import ProductInfo from './components/ProductInfo';
-import NotFoundPage from './components/NotFoundPage';
-import ErrorPage from './components/ErrorPage';
+import Layout from './Components/Layout';
+import ProductListing from './Components/ProductListing';
+import ProductInfo from './Components/ProductInfo';
+import NotFoundPage from './Components/NotFoundPage';
+import ErrorPage from './Components/ErrorPage';
 
 const router = new Router([{
   path: '/products',
@@ -123,8 +123,8 @@ const container = document.getElementById('app');
 async function render() {
   try {
     const path = window.location.hash.substr(1) || '/';
-    const component = await router.match(path) || <NotFoundPage />;
-    React.render(component, container);
+    const Component = await router.match(path) || <NotFoundPage />;
+    React.render(Component, container);
   } catch (err) {
     React.render(<ErrorPage {...err} />, container);
   }

@@ -3,7 +3,7 @@
 import 'babel/polyfill';
 import React from 'react';
 import FastClick from 'fastclick';
-import App from './components/App';
+import App from './Components/App';
 import Dispatcher from './core/Dispatcher';
 import AppActions from './actions/AppActions';
 import ActionTypes from './constants/ActionTypes';
@@ -25,7 +25,7 @@ let onSetMeta = (name, content) => {
 };
 
 function run() {
-  // Render the top-level React component
+  // Render the top-level React Component
   let props = {
     path: path,
     context: {

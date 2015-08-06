@@ -9,7 +9,7 @@ import React from 'react';
 import './core/Dispatcher';
 import './stores/AppStore';
 import db from './core/Database';
-import App from './components/App';
+import App from './Components/App';
 
 const server = express();
 
@@ -25,7 +25,7 @@ server.use('/api/query', require('./api/query'));
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
 
-// The top-level React component + HTML template for it
+// The top-level React Component + HTML template for it
 const templateFile = path.join(__dirname, 'templates/index.html');
 const template = _.template(fs.readFileSync(templateFile, 'utf8'));
 

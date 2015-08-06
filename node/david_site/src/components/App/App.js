@@ -25,11 +25,11 @@ class App {
     path: PropTypes.string.isRequired
   };
 
-  componentDidMount() {
+  ComponentDidMount() {
     window.addEventListener('popstate', this.handlePopState);
   }
 
-  componentWillUnmount() {
+  ComponentWillUnmount() {
     window.removeEventListener('popstate', this.handlePopState);
   }
 
@@ -38,7 +38,7 @@ class App {
   }
 
   render() {
-    let component;
+    let Component;
 
     switch (this.props.path) {
 
@@ -46,26 +46,26 @@ class App {
       case '/about':
       case '/privacy':
         let page = AppStore.getPage(this.props.path);
-        component = React.createElement(pages[page.component], page);
+        Component = React.createElement(pages[page.Component], page);
         break;
 
       case '/contact':
-        component = <ContactPage />;
+        Component = <ContactPage />;
         break;
 
       case '/login':
-        component = <LoginPage />;
+        Component = <LoginPage />;
         break;
 
       case '/register':
-        component = <RegisterPage />;
+        Component = <RegisterPage />;
         break;
     }
 
-    return component ? (
+    return Component ? (
       <div>
         <Header />
-        {component}
+        {Component}
         <Feedback />
         <Footer />
       </div>
